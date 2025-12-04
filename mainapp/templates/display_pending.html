@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+{% extends 'index.html' %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="col-lg-12 grid-margin stretch-card">
+                <div class="card" style="border: 3px solid #98FB98;" >
+                  <div class="card-body"  >
+                    <h4 class="card-title">Vehicle Table</h4>
+<!--                    <p class="card-description"> Add class <code>.table-striped</code>-->
+<!--                    </p>-->
+                    <div class="table-responsive">
+                      <table class="table table-striped">
+                        <thead>
+                          <tr>
+                            <th style="color:white"> Category Name </th>
+                            <th style="color:white"> Sub Category Name </th>
+                            <th style="color:white"> Product Name </th>
+                            <th style="color:white">Owner Name</th>
+                            <th style="color:white">Price</th>
+                            <th style="color:white">Mobile</th>
+                            <th style="color:white">Location</th>
+                            <th style="color:white">Description</th>
+                            <th style="color:white">Images </th>
+                             <th style="color:white">Additional Data</th>
+                            <th style="color:white"> Actions</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                        {% for i in pro %}
+                        <tr>
+                            <td class="py-1" >
+                              {{i.Categoryname}}
+                            </td>
+                            <td> {{i.Subcategoryname}} </td>
+                            <td>{{i.Productname}}</td>
+                            <td>{{i.Ownername}}</td>
+                            <td>{{i.Price}}</td>
+                            <td>{{i.Mobile}}</td>
+                            <td>{{i.Location}}</td>
+                            <td>{{i.Description}}</td>
+                            <td>
+    {% if i.Vehicleimage1 %}
+        <img src="{{ i.Vehicleimage1.url }}" alt="Vehicle Image 1">
+    {% else %}
+        <p>No Image</p>
+    {% endif %}
+
+    {% if i.Vehicleimage2 %}
+        <img src="{{ i.Vehicleimage2.url }}" alt="Vehicle Image 2">
+    {% else %}
+        <p>No Image</p>
+    {% endif %}
+
+    {% if i.Vehicleimage3 %}
+        <img src="{{ i.Vehicleimage3.url }}" alt="Vehicle Image 3">
+    {% else %}
+        <p>No Image</p>
+    {% endif %}
+</td>
+                            <td>{{i.AdditionalData}}</td>
+                            <td>
+                              <a class="btn btn mr-2" style="color:gray;border: 2px solid grey;" href="{% url 'approve_pending' pk=i.id %}" >Approve</a>
+                              <a class="btn btn" href="{% url 'delete_pending' cat_id=i.id %}" style="color:grey;border: 2px solid grey;">Delete</a>
+
+                            </td>
+
+                        </tr>
+                        {% endfor %}
+<!--                          <tr>-->
+<!--                            <td class="py-1">-->
+<!--                              <img src="../../assets/images/faces-clipart/pic-2.png" alt="image">-->
+<!--                            </td>-->
+<!--                            <td> Messsy Adam </td>-->
+<!--                            <td>-->
+<!--                              <div class="progress">-->
+<!--                                <div class="progress-bar bg-danger" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>-->
+<!--                              </div>-->
+<!--                            </td>-->
+<!--                            <td> $245.30 </td>-->
+<!--                            <td> July 1, 2015 </td>-->
+<!--                          </tr>-->
+<!--                          <tr>-->
+<!--                            <td class="py-1">-->
+<!--                              <img src="../../assets/images/faces-clipart/pic-3.png" alt="image">-->
+<!--                            </td>-->
+<!--                            <td> John Richards </td>-->
+<!--                            <td>-->
+<!--                              <div class="progress">-->
+<!--                                <div class="progress-bar bg-warning" role="progressbar" style="width: 90%" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>-->
+<!--                              </div>-->
+<!--                            </td>-->
+<!--                            <td> $138.00 </td>-->
+<!--                            <td> Apr 12, 2015 </td>-->
+<!--                          </tr>-->
+<!--                          <tr>-->
+<!--                            <td class="py-1">-->
+<!--                              <img src="../../assets/images/faces-clipart/pic-4.png" alt="image">-->
+<!--                            </td>-->
+<!--                            <td> Peter Meggik </td>-->
+<!--                            <td>-->
+<!--                              <div class="progress">-->
+<!--                                <div class="progress-bar bg-primary" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>-->
+<!--                              </div>-->
+<!--                            </td>-->
+<!--                            <td> $ 77.99 </td>-->
+<!--                            <td> May 15, 2015 </td>-->
+<!--                          </tr>-->
+<!--                          <tr>-->
+<!--                            <td class="py-1">-->
+<!--                              <img src="../../assets/images/faces-clipart/pic-1.png" alt="image">-->
+<!--                            </td>-->
+<!--                            <td> Edward </td>-->
+<!--                            <td>-->
+<!--                              <div class="progress">-->
+<!--                                <div class="progress-bar bg-danger" role="progressbar" style="width: 35%" aria-valuenow="35" aria-valuemin="0" aria-valuemax="100"></div>-->
+<!--                              </div>-->
+<!--                            </td>-->
+<!--                            <td> $ 160.25 </td>-->
+<!--                            <td> May 03, 2015 </td>-->
+<!--                          </tr>-->
+<!--                          <tr>-->
+<!--                            <td class="py-1">-->
+<!--                              <img src="../../assets/images/faces-clipart/pic-2.png" alt="image">-->
+<!--                            </td>-->
+<!--                            <td> John Doe </td>-->
+<!--                            <td>-->
+<!--                              <div class="progress">-->
+<!--                                <div class="progress-bar bg-info" role="progressbar" style="width: 65%" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100"></div>-->
+<!--                              </div>-->
+<!--                            </td>-->
+<!--                            <td> $ 123.21 </td>-->
+<!--                            <td> April 05, 2015 </td>-->
+<!--                          </tr>-->
+<!--                          <tr>-->
+<!--                            <td class="py-1">-->
+<!--                              <img src="../../assets/images/faces-clipart/pic-3.png" alt="image">-->
+<!--                            </td>-->
+<!--                            <td> Henry Tom </td>-->
+<!--                            <td>-->
+<!--                              <div class="progress">-->
+<!--                                <div class="progress-bar bg-warning" role="progressbar" style="width: 20%" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>-->
+<!--                              </div>-->
+<!--                            </td>-->
+<!--                            <td> $ 150.00 </td>-->
+<!--                            <td> June 16, 2015 </td>-->
+<!--                          </tr>-->
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+</body>
+</html>
+{% endblock %}

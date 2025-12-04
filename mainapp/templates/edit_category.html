@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+{% extends 'index.html' %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="col-12 grid-margin stretch-card" style="border: 3px solid #98FB98;" >
+                <div class="card">
+                  <div class="card-body">
+                    <h3 class="card-title">Edit Category Details</h3><br><br>
+<!--                    <p class="card-description"> Basic form elements </p>-->
+                    <form class="forms-sample" method="post" action="{% url 'update_category' cat_id=cat.id %}" enctype="multipart/form-data" >
+                      {% csrf_token %}
+                      <div class="form-group">
+                        <label for="exampleInputName1">Category Name</label>
+                        <input type="text" class="form-control" id="exampleInputName1" placeholder="Category Name" name="Categoryname" value="{{cat.Categoryname}}" >
+                      </div>
+                      <div class="form-group">
+                        <label for="exampleTextarea1">Description</label>
+                        <textarea class="form-control" id="exampleTextarea1" rows="4" placeholder="Description" name="Description" >{{cat.Description}}</textarea>
+                      </div>
+<!--                      <div class="form-group">-->
+<!--                        <label for="exampleInputEmail3">Email address</label>-->
+<!--                        <input type="email" class="form-control" id="exampleInputEmail3" placeholder="Email">-->
+<!--                      </div>-->
+<!--                      <div class="form-group">-->
+<!--                        <label for="exampleInputPassword4">Password</label>-->
+<!--                        <input type="password" class="form-control" id="exampleInputPassword4" placeholder="Password">-->
+<!--                      </div>-->
+<!--                      <div class="form-group">-->
+<!--                        <label for="exampleSelectGender">Gender</label>-->
+<!--                        <select class="form-control" id="exampleSelectGender">-->
+<!--                          <option>Male</option>-->
+<!--                          <option>Female</option>-->
+<!--                        </select>-->
+<!--                      </div>-->
+                      <div class="form-group">
+
+
+                        <div class="input-group col-xs-12 ">
+                          <input type="file" class="form-control file-upload-info"  placeholder="Upload Image" name="Categoryimage" >
+
+<!--                          <span class="input-group-append">-->
+<!--                            <button class="file-upload-browse btn btn-primary" type="button">Upload</button>-->
+<!--                          </span>-->
+                        </div><br>
+                           <img src="{{cat.Categoryimage.url}}" width="100px" height="100px">
+                      </div><br>
+<!--                      <div class="form-group">-->
+<!--                        <label for="exampleInputCity1">City</label>-->
+<!--                        <input type="text" class="form-control" id="exampleInputCity1" placeholder="Location">-->
+<!--                      </div>-->
+
+                      <button type="submit" class="btn btn-primary mr-3" style="width:150px" >Submit</button>
+                      <a href="{% url 'index' %}" class="btn btn-dark">Cancel</a>
+                    </form>
+                  </div>
+                </div>
+              </div>
+
+</body>
+</html>
+{% endblock %}

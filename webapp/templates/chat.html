@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Chat</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .chat-container {
+            width: 80%;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .message-box {
+            height: 300px;
+            overflow-y: auto;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            padding: 10px;
+            background: #f9f9f9;
+        }
+        .message {
+            margin-bottom: 10px;
+        }
+        .message .sender {
+            font-weight: bold;
+        }
+        .message-form {
+            display: flex;
+            gap: 10px;
+        }
+        .message-form input {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .message-form button {
+            padding: 10px 20px;
+            border: none;
+            background-color: #4CAF50;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="chat-container">
+        <h2>Chat about "{{ product.name }}"</h2>
+        <div class="message-box" id="message-box">
+            {% for message in messages %}
+            <div class="message">
+                <span class="sender">{{ message.sender }}:</span>
+                <span class="content">{{ message.content }}</span>
+            </div>
+            {% endfor %}
+        </div>
+        <form class="message-form" id="message-form">
+            <input type="text" id="message-input" placeholder="Type your message here..." required>
+            <button type="submit">Send</button>
+        </form>
+    </div>
+
+    <script>
+        $(document).ready(function () {
+            // Auto-scroll to the bottom of the message box
+            const messageBox = $('#message-box');
+            messageBox.scrollTop(messageBox.prop('scrollHeight'));
+
+            // Handle form submission
+            $('#message-form').submit(function (e) {
+                e.preventDefault();
+                const message = $('#message-input').val();
+                const url = window.location.pathname;
+
+                $.ajax({
+                    url: url,
+                    method: 'POST',
+                    headers: {
+                        'X-CSRFToken': '{{ csrf_token }}'
+                    },
+                    data: JSON.stringify({ message: message }),
+                    contentType: 'application/json',
+                    success: function (response) {
+                        // Append the new message to the message box
+                        messageBox.append(`<div class="message"><span class="sender">{{ sender_username }}:</span> <span class="content">${message}</span></div>`);
+                        messageBox.scrollTop(messageBox.prop('scrollHeight')); // Scroll to the bottom
+                        $('#message-input').val(''); // Clear the input
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

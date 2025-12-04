@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Messages for {{ product.Productname }}</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: black;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1, h2 {
+            text-align: center;
+            color: #4CAF50;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 20px auto;
+            background: green;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .senders {
+            margin-bottom: 20px;
+        }
+
+        .senders h2 {
+            font-size: 1.5em;
+        }
+
+        .senders ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .senders ul li {
+            margin: 10px 0;
+        }
+
+        .senders ul li a {
+            text-decoration: none;
+            color: #4CAF50;
+            font-weight: bold;
+        }
+
+        .senders ul li a:hover {
+            text-decoration: underline;
+        }
+
+        .chat-section {
+            border: 1px solid #ddd;
+            padding: 15px;
+            border-radius: 5px;
+            background:black
+        }
+
+        .chat-section h2 {
+            margin-bottom: 10px;
+            background:black
+        }
+
+        .messages {
+            max-height: 300px;
+            overflow-y: auto;
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            background: #f1f1f1;
+        }
+
+        .messages div {
+            margin-bottom: 10px;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        .messages div strong {
+            color: #4CAF50;
+        }
+
+        .messages div small {
+            display: block;
+            color: #888;
+            font-size: 0.8em;
+        }
+
+        .messages div:nth-child(even) {
+            background: #e8f5e9;
+        }
+
+        .messages div:nth-child(odd) {
+            background: #f9f9f9;
+        }
+
+        .message-form {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .message-form textarea {
+            resize: none;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1em;
+            height: 80px;
+        }
+
+        .message-form button {
+            background: #4CAF50;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 1em;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .message-form button:hover {
+            background: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <h1>Messages for {{ product.Productname }}</h1>
+
+    <div class="container">
+        <!-- List of Senders -->
+        <div class="senders">
+            <h2 style="color:white">Senders</h2>
+            <ul style="color:white">
+                {% for sender in senders %}
+                    {% if sender != request.session.Name %}
+                        <li style="color:white">
+                            {% if sender == product.Username %}
+                            <a style="color:yellow;font-size:30px; padding-left:350px" href="?sender={{ sender }}">{{ sender }}(OWNER)</a>
+                             {% endif %}
+                            {% if sender != product.Username %}
+                            <a style="color:white" href="?sender={{ sender }}">{{ sender }}</a>
+                            {% endif %}
+                        </li>
+                    {% endif %}
+                {% empty %}
+                    <p>No messages yet.</p>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <!-- Chat Section -->
+        {% if selected_sender %}
+        <div class="chat-section" style="position:fix" >
+            <h2 style="color:white" >Chat with {{ selected_sender }}</h2>
+            <div class="messages">
+                {% for message in messages %}
+                    <div>
+                        <strong>
+                            {% if message.sender == request.session.Name %}
+                                You
+                            {% else %}
+                                {{ message.sender }}
+                            {% endif %}
+                        :</strong> {{ message.content }}
+                        <small>{{ message.timestamp }}</small>
+                    </div>
+                {% empty %}
+                    <p>No messages in this chat yet.</p>
+                {% endfor %}
+            </div>
+
+            <!-- Message Form -->
+            <form class="message-form" method="POST" action="{% url 'send_message' product.id %}?sender={{ selected_sender }}">
+                {% csrf_token %}
+                <input type="hidden" name="receiver" value="{{ selected_sender }}">
+                <textarea name="content" placeholder="Write your message..." required></textarea>
+                <button type="submit">Send</button>
+            </form>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>

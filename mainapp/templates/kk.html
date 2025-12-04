@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    <label for="title">Ad Title:</label>
+    <input type="text" name="title" id="title" required>
+
+    <label for="description">Description:</label>
+    <textarea name="description" id="description" required></textarea>
+
+    <label for="duration">Duration (in days):</label>
+    <input type="number" name="duration" id="duration" required oninput="calculateAmount()">
+
+    <p>Rate per day: ₹<span id="rate">{{ rate }}</span></p>
+    <p>Total Amount: ₹<span id="total_amount">0</span></p>
+
+    <label for="transaction_id">Transaction ID:</label>
+    <input type="text" name="transaction_id" id="transaction_id" required>
+
+    <label for="payment_screenshot">Payment Screenshot:</label>
+    <input type="file" name="payment_screenshot" id="payment_screenshot" required>
+
+    <button type="submit">Submit Ad</button>
+</form>
+
+<script>
+    function calculateAmount() {
+        const rate = parseFloat(document.getElementById('rate').innerText);
+        const duration = parseInt(document.getElementById('duration').value) || 0;
+        document.getElementById('total_amount').innerText = (rate * duration).toFixed(2);
+    }
+</script>
+
+
+</body>
+</html>

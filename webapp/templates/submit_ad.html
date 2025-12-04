@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Submit Advertisement</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 150px;
+            padding: 0;
+            background-color: #f9f9f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        form {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 500px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #555;
+        }
+
+        input[type="text"],
+        input[type="number"],
+        input[type="url"],
+        input[type="file"],
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+
+        textarea {
+            resize: vertical;
+        }
+
+        p {
+            margin: 10px 0;
+            font-weight: bold;
+            color: #333;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        #total_amount {
+            color: #007bff;
+        }
+
+    </style>
+</head>
+<body>
+<form method="POST"  enctype="multipart/form-data">
+    {% csrf_token %}
+
+    <h1>Submit Advertisement</h1>
+
+    <div class="form-group">
+        <label for="username">Username:</label>
+        <input type="text" name="username" id="username" required>
+    </div>
+
+    <div class="form-group">
+        <label for="title">Ad Title:</label>
+        <input type="text" name="title" id="title" required>
+    </div>
+
+    <div class="form-group">
+        <label for="description">Description:</label>
+        <textarea name="description" id="description" rows="4" required></textarea>
+    </div>
+
+    <div class="form-group">
+        <label for="duration">Duration (in days):</label>
+        <input type="number" name="duration" id="duration" required oninput="calculateAmount()">
+    </div>
+
+    <p>Rate per day: ₹<span id="rate">{{ rate }}</span></p>
+    <p>Total Amount: ₹<span id="total_amount">0</span></p>
+
+    <div class="form-group">
+        <label for="transaction_id">Transaction ID:</label>
+        <input type="text" name="transaction_id" id="transaction_id" required>
+    </div>
+
+    <div class="form-group">
+        <label for="link">Link:</label>
+        <input type="url" name="link" id="link" required>
+    </div>
+
+    <div class="form-group">
+        <label for="content">Content:</label>
+        <input type="file" name="content" id="content" required>
+    </div>
+
+    <div class="form-group">
+        <label for="payment_screenshot">Payment Screenshot:</label>
+        <input type="file" name="payment_screenshot" id="payment_screenshot" required>
+    </div>
+
+    <button type="submit">Submit Ad</button>
+</form>
+
+<script>
+    function calculateAmount() {
+        const rate = parseFloat(document.getElementById('rate').innerText);
+        const duration = parseInt(document.getElementById('duration').value) || 0;
+        document.getElementById('total_amount').innerText = (rate * duration).toFixed(2);
+    }
+</script>
+
+</body>
+</html>

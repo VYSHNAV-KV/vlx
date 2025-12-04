@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+{% extends 'index.html' %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body style="text-align:center" ><br>
+<h2 style="color:green" >Update Ad Rate</h2><br>
+<form method="POST">
+    {% csrf_token %}
+    <label for="rate_per_day">Rate Per Day (₹):</label>
+    <input type="number" name="rate_per_day" id="rate_per_day" value="{{ rate }}" step="0.01" required>
+
+    <button type="submit">Update Rate</button>
+</form>
+
+
+</body>
+</html>
+{% endblock %}

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Toggle Auto Approval Mode</title>
+</head>
+<body>
+    <h1>Toggle Auto Approval Mode</h1>
+
+    <!-- Display the last updated time -->
+    <p>Last updated: {{ last_updated }}</p>
+
+    <form id="toggleForm">
+        <label for="autoApprovalToggle">Auto Approval:</label>
+        <input type="checkbox" id="autoApprovalToggle" {% if auto_approve %} checked {% endif %}>
+    </form>
+
+
+
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            const toggle = $('#autoApprovalToggle');
+            toggle.change(function() {
+                const isChecked = this.checked;
+
+                $.ajax({
+                    url: '{% url "toggle_auto_approval" %}',  // Referencing the view's URL pattern
+                    method: 'POST',
+                    data: JSON.stringify({ auto_approve: isChecked }),
+                    contentType: 'application/json',
+                    headers: {
+                        'X-CSRFToken': '{{ csrf_token }}'
+                    },
+                    success: function(response) {
+                        alert(response.message);
+                        // Update the last updated time after successful update
+                        $('p').text('Last updated: ' + response.updated_at);
+                    },
+                    error: function(error) {
+                        console.error("Error:", error);
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

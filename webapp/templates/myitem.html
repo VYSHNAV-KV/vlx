@@ -1,0 +1,258 @@
+<!doctype html>
+{% load static %}
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="{% static 'table1/fonts/icomoon/style.css' %}">
+    <link rel="stylesheet" href="{% static 'table1/css/owl.carousel.min.css' %}">
+    <link rel="stylesheet" href="{% static 'table1/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'table1/css/style.css' %}">
+
+    <title>Profile Page</title>
+    <style>
+        body {
+            background:green; /* Green and Black Gradient */
+            color: white;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 50px auto;
+            padding: 20px;
+            background: black;/* Semi-transparent background for the container */
+            border-radius: 15px;
+        }
+
+        h2 {
+            text-align: center;
+            font-size: 36px;
+            margin-bottom: 40px;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+        }
+
+        .dark-green-button {
+            background-color: #025a2e; /* Very dark green */
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            padding:50px;
+            width:100%
+        }
+
+        .dark-green-button:hover {
+            background-color: #013220; /* Slightly lighter green on hover */
+            transform: scale(1.1);
+        }
+
+        .profile-image {
+            text-align: center;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .profile-image img {
+            border-radius: 50%;
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            border: 3px solid white;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .profile-image img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.5);
+        }
+
+        .profile-image input {
+            margin-top: 15px;
+            padding: 10px;
+            background: #2c3e50;
+            color: white;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .profile-image input:hover {
+            background: #16a085;
+        }
+
+        .dropdown-content {
+            display: none;
+            margin-top: 20px;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        .dropdown-content table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .dropdown-content table th, .dropdown-content table td {
+            padding: 12px;
+            text-align: center;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .dropdown-content table tr:hover {
+            background-color: rgba(0, 0, 0, 0.1);
+        }
+
+        /* Animation for dropdown */
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
+        .dark-green-button {
+            display: inline-block;
+            margin: 10px 5px;
+        }
+
+        .dropdown-content {
+            background-color: #333;
+            border-radius: 10px;
+        }
+
+        .table-striped tbody tr:nth-of-type(odd) {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .table-striped tbody tr:nth-of-type(even) {
+            background-color: rgba(255, 255, 255, 0.05);
+        }
+
+        /* Responsive design for mobile */
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+
+            .profile-image img {
+                width: 120px;
+                height: 120px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <!-- Profile Image Section -->
+
+
+    <!-- Dropdown Section -->
+    <h2>Your Products</h2>
+
+    <!-- Approved Products -->
+    <h3 class="dark-green-button" onclick="toggleDropdown('approved-products')">
+        Approved Products
+    </h3>
+    <div id="approved-products" class="dropdown-content">
+        <table class="table table-striped custom-table">
+            <thead>
+            <tr>
+                <th scope="col">Your Product</th>
+                <th scope="col">Added Date</th>
+                <th scope="col">View</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for i in data %}
+                <tr>
+                    <td>{{ i.Productname }}</td>
+                    <td>{{ i.created_at }}</td>
+                    <td>
+                        <a type="button" class="btn" style="border:2px solid white" href="{% url 'edit_dataform' pro_id=i.id %}" >View/Edit</a>
+                        <a type="button" class="btn" style="border:2px solid green" href="{% url 'delete_dataform' pro_id=i.id %}" >Delete</a>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Pending Products -->
+    <h3 class="dark-green-button" onclick="toggleDropdown('pending-products')">
+        Pending Products
+    </h3>
+    <div id="pending-products" class="dropdown-content">
+        <table class="table table-striped custom-table">
+            <thead>
+            <tr>
+                <th scope="col">Your Product</th>
+<!--                <th scope="col">Added Date</th>-->
+<!--                <th scope="col">View</th>-->
+            </tr>
+            </thead>
+            <tbody>
+            {% for i in data1 %}
+                <tr>
+                    <td>{{ i.Productname }}</td>
+<!--                    <td>{{ i.created_at }}</td>-->
+<!--                    <td>-->
+<!--                        <a type="button" class="btn" style="border:2px solid white" href="{% url 'edit_dataform' pro_id=i.id %}" class="dark-green-button">View/Edit</a>-->
+<!--                    </td>-->
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Favorite Products -->
+    <h3 class="dark-green-button" onclick="toggleDropdown('favorite-products')" style="display:flex" >
+        <span  class="icon-heart" style=" color:red; padding-left:37px; font-size: 34px;"></span><p style="font-size: 20px;padding:4px"><b>{{number}}</b></p><!-- Using Icomoon Heart Icon -->
+</h3>
+    <div id="favorite-products" class="dropdown-content">
+        <table class="table table-striped custom-table">
+            <thead>
+            <tr>
+                <th scope="col">Product</th>
+                <th scope="col">Price</th>
+                <th scope="col">Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for i in data2 %}
+                <tr>
+                    <td>{{ i.Productname }}</td>
+                    <td>{{ i.Price }}</td>
+                    <td>
+                        <a type="button" class="btn" style="border:2px solid green" href="{% url 'delete_cart' cart_id=i.id %}" class="dark-green-button">Remove</a>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<script>
+    function toggleDropdown(id) {
+        const content = document.getElementById(id);
+        content.style.display = content.style.display === 'none' || content.style.display === '' ? 'block' : 'none';
+    }
+</script>
+
+<script src="{% static 'table1/js/jquery-3.3.1.min.js' %}"></script>
+<script src="{% static 'table1/js/popper.min.js' %}"></script>
+<script src="{% static 'table1/js/bootstrap.min.js' %}"></script>
+<script src="{% static 'table1/js/main.js' %}"></script>
+
+</body>
+</html>

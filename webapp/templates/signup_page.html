@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Sign Up Form</title>
+
+    <!-- Font Icon -->
+    <link rel="stylesheet" href="{% static 'sign/fonts/material-icon/css/material-design-iconic-font.min.css' %}">
+
+    <!-- Custom CSS -->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Quicksand', sans-serif;
+        }
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: #000;
+        }
+        section {
+            position: absolute;
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 2px;
+            flex-wrap: wrap;
+            overflow: hidden;
+        }
+        section::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(#000, #0f0, #000);
+            animation: animate 5s linear infinite;
+        }
+        @keyframes animate {
+            0% {
+                transform: translateY(-100%);
+            }
+            100% {
+                transform: translateY(100%);
+            }
+        }
+        section span {
+            position: relative;
+            display: block;
+            width: calc(6.25vw - 2px);
+            height: calc(6.25vw - 2px);
+            background: #181818;
+            z-index: 2;
+            transition: 1.5s;
+        }
+        section span:hover {
+            background: #0f0;
+            transition: 0s;
+        }
+        .form-container {
+            position: absolute;
+            width: 400px;
+            background: #222;
+            z-index: 1000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 40px;
+            border-radius: 4px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.9);
+        }
+        .form-container h2 {
+            font-size: 2em;
+            color: #0f0;
+            text-transform: uppercase;
+            text-align: center;
+        }
+        .form-container form {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+        .form-group {
+            position: relative;
+            width: 100%;
+        }
+        .form-group input {
+            position: relative;
+            width: 100%;
+            background: #333;
+            border: none;
+            outline: none;
+            padding: 25px 10px 7.5px;
+            border-radius: 4px;
+            color: #fff;
+            font-weight: 500;
+            font-size: 1em;
+        }
+        .form-group i {
+            position: absolute;
+            left: 0;
+            padding: 15px 10px;
+            font-style: normal;
+            color: #aaa;
+            transition: 0.5s;
+            pointer-events: none;
+        }
+        .form-group input:focus ~ i,
+        .form-group input:valid ~ i {
+            transform: translateY(-7.5px);
+            font-size: 0.8em;
+            color: #fff;
+        }
+        .form-group .form-submit {
+            padding: 15px;
+            background: linear-gradient(45deg, #0f0, #4caf50);
+            color: #000;
+            font-weight: 700;
+            font-size: 1.25em;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: 0.3s ease-in-out;
+            text-align: center;
+        }
+        .form-group .form-submit:hover {
+            background: linear-gradient(45deg, #4caf50, #0f0);
+            box-shadow: 0 4px 10px rgba(0, 255, 0, 0.5);
+        }
+        .form-group .form-submit:active {
+            opacity: 0.8;
+            transform: scale(0.95);
+        }
+        .login-link {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 1em;
+            color: #fff;
+        }
+        .login-link a {
+            color: #0f0;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+        .login-link a:hover {
+            color: #4caf50;
+        }
+    </style>
+</head>
+<body>
+    <section>
+        <section> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span>
+
+        <div class="form-container">
+
+            <form method="POST" id="register-form" action="{% url 'save_signup' %}" name="myform" onsubmit="password_len()">
+                <h2>Sign Up</h2>
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="name"><i class="zmdi zmdi-account material-icons-name"></i></label>
+                    <input type="text" name="Name" id="name" placeholder="Your Name" required />
+                </div>
+                <div class="form-group">
+                    <label for="mobile"><i class="zmdi zmdi-phone"></i></label>
+                    <input type="number" name="Mobile" id="mobile" placeholder="Your Mobile Number" required />
+                </div>
+                <div class="form-group">
+                    <label for="email"><i class="zmdi zmdi-email"></i></label>
+                    <input type="email" name="Email" id="email" placeholder="Your Email" required />
+                </div>
+                <div class="form-group">
+                    <label for="pass"><i class="zmdi zmdi-lock"></i></label>
+                    <input type="password" name="Password" id="pass" placeholder="Password" required />
+                </div>
+                <div class="form-group">
+                    <label ><i class="zmdi zmdi-lock-outline"></i></label>
+                    <input type="password" name="Re_password" id="re_pass" placeholder="Repeat your password" required />
+                </div>
+                <div class="form-group">
+                    <input type="checkbox" name="agree-term" id="agree-term" class="agree-term" />
+                    <label for="agree-term">I agree to the <a href="#" class="term-service">Terms of service</a></label>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="form-submit" style="width:100%;color:white;" >Register</button>
+                </div>
+                <div class="login-link">
+                    Already have an account? <a href="{% url 'signin_page' %}">Login here</a>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- JS -->
+    <script>
+        function password_len() {
+            const pwd = document.myform.Password.value;
+            const repwd = document.myform.Re_password.value;
+            if (pwd.length < 6) {
+                alert("Password must be at least 6 characters long");
+                return false;
+            }
+            if (pwd !== repwd) {
+                alert("Passwords do not match");
+                return false;
+            }n
+        }
+    </script>
+</body>
+</html>

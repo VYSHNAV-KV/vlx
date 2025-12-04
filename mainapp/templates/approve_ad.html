@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+{% extends 'index.html' %}
+
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Approve Ad</title>
+    <style>
+        .container1 {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .heading1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+        }
+        .info1 {
+            margin-bottom: 10px;
+            color: #555;
+        }
+        .label1 {
+            font-weight: bold;
+            color: #000;
+        }
+        .link1 {
+            color: #4CAF50;
+            text-decoration: none;
+        }
+        .link1:hover {
+            color: #2e7d32;
+        }
+        .image1 {
+            max-width: 400px;
+            margin-top: 10px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .button1 {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            text-align: center;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 20px;
+        }
+        .button1:hover {
+            background-color: #2e7d32;
+        }
+    </style>
+</head>
+<body>
+<div class="container1">
+    <h2 class="heading1">Approve Ad</h2>
+    <p class="info1"><span class="label1">Title:</span> {{ ad.title }}</p>
+    <p class="info1"><span class="label1">Description:</span> {{ ad.description }}</p>
+    <p class="info1"><span class="label1">Duration:</span> {{ ad.duration }} days</p>
+    <p class="info1"><span class="label1">Amount:</span> ₹{{ ad.amount }}</p>
+    <p class="info1"><span class="label1">Transaction ID:</span> {{ ad.transaction_id }}</p>
+    <p class="info1">
+        <span class="label1">URL:</span>
+        <a href="{{ ad.link }}" target="_blank" class="link1">{{ ad.link }}</a>
+    </p>
+
+    {% if ad.content %}
+        <p class="info1"><span class="label1">Ad Content:</span></p>
+        <img src="{{ ad.content.url }}" alt="Ad Content" class="image1">
+    {% else %}
+        <p class="info1"><span class="label1">Ad Content:</span> No content uploaded</p>
+    {% endif %}
+
+    <p class="info1"><span class="label1">Payment Screenshot:</span></p>
+    {% if ad.payment_screenshot %}
+        <img src="{{ ad.payment_screenshot.url }}" alt="Payment Screenshot" class="image1">
+    {% else %}
+        <p class="info1">No payment screenshot uploaded</p>
+    {% endif %}
+
+    <form method="POST">
+        {% csrf_token %}
+        <button type="submit" class="button1">Approve Ad</button>
+    </form>
+</div>
+</body>
+</html>
+{% endblock %}

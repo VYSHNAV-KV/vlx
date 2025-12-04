@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Send Message</title>
+    <style>
+        body {
+            background-color: #f0f0f0;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+        button {
+            background-color: #28a745;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+        .error {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+
+
+    <div class="container">
+        {% if product.Username == None %}
+        <p style="color:black;display:flex" >Sorry you cant message the owner.You can directly contact through ,  <a style="color:blue" > {{ product.Mobile}}</a></p>
+        {% endif %}
+
+         {% if product.Username %}
+        <h2>Send a Message to {{ product.Username }}</h2>
+
+        {% if error %}
+            <p class="error">{{ error }}</p>
+        {% endif %}
+
+
+        <form method="POST" action="{% url 'send_message' product.id %}">
+            {% csrf_token %}
+            <input type="hidden" name="receiver" value="{{ receiver }}">
+            <textarea name="content" rows="4" placeholder="Write your message..." required></textarea>
+            <button type="submit">Send</button>
+        </form>
+
+        <br>
+        <a href="{% url 'message_view' product.id %}">View Message History</a>
+        {% endif %}
+    </div>
+</body>
+</html>

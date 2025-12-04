@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div>
+  <h1>Conversation with {{ other_user.username }}</h1>
+<h4>Product: {{ product.name }}</h4>
+{% for message in messages %}
+    {% if message.sender.id == request.session.user_id %}
+        <div class="alert alert-primary">
+            <strong>You:</strong> {{ message.content }}
+        </div>
+    {% else %}
+        <div class="alert alert-secondary">
+            <strong>{{ message.sender.username }}:</strong> {{ message.content }}
+        </div>
+    {% endif %}
+{% endfor %}
+
+<form method="POST">
+    {% csrf_token %}
+    <textarea name="content" placeholder="Type your message..." required></textarea>
+    <button type="submit">Send</button>
+</form>
+
+</div>
+
+</body>
+</html>

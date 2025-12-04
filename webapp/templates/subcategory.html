@@ -1,0 +1,412 @@
+
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+
+    <!--Page Title-->
+    <title>Namari - Free Landing Page Template</title>
+
+    <!--Meta Keywords and Description-->
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"/>
+
+    <!--Favicon-->
+    <link rel="shortcut icon" href="{% static 'web3/images/favicon.ico' %}" title="Favicon"/>
+
+    <!-- Main CSS Files -->
+    <link rel="stylesheet" href="{% static 'web3/css/style.css' %}">
+
+    <!-- Namari Color CSS -->
+    <link rel="stylesheet" href="{% static 'web3/css/namari-color.css' %}">
+
+    <!--Icon Fonts - Font Awesome Icons-->
+    <link rel="stylesheet" href="{% static 'web3/css/font-awesome.min.css' %}">
+
+    <!-- Animate CSS-->
+    <link href="{% static 'web3/css/animate.css' %}" rel="stylesheet" type="text/css">
+
+    <!--Google Webfonts-->
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+
+
+
+</head>
+<body style="background-color:green">
+
+<!-- Preloader -->
+<div id="preloader">
+    <div id="status" class="la-ball-triangle-path">
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+</div>
+<!--End of Preloader-->
+
+<div class="page-border" data-wow-duration="0.7s" data-wow-delay="0.2s">
+    <div class="top-border wow fadeInDown animated" style="visibility: visible; animation-name: fadeInDown;"></div>
+    <div class="right-border wow fadeInRight animated" style="visibility: visible; animation-name: fadeInRight;"></div>
+    <div class="bottom-border wow fadeInUp animated" style="visibility: visible; animation-name: fadeInUp;"></div>
+    <div class="left-border wow fadeInLeft animated" style="visibility: visible; animation-name: fadeInLeft;"></div>
+</div>
+
+<div id="wrapper">
+
+    <header id="banner" class="scrollto clearfix" data-enllax-ratio=".5" style="background-color:black; background-image: url('{% static 'web1/images/background9.jpg' %}'); background-size: cover; background-repeat: no-repeat; background-attachment: fixed; background-position: center; margin: 0; padding: 0;">
+        <div id="header" class="nav-collapse">
+            <div class="row clearfix">
+                <div class="col-1">
+
+                    <!--Logo-->
+                    <div id="logo">
+                        <!--Logo on the banner-->
+                        <img src="images/logo.png" id="banner-logo" alt="VLX - Buy & Sell"/>
+                        <!--Logo on the sticky navigation bar-->
+                        <img src="images/logo-2.png" id="navigation-logo" alt="VLX - Buy & Sell"/>
+                    </div>
+                    <!--End of Logo-->
+
+                    <aside>
+                        <!--Social Icons in Header-->
+                        <ul class="social-icons">
+                            <li>
+                                <a target="_blank" title="Facebook" href="https://www.facebook.com/username">
+                                    <i class="fa fa-facebook fa-1x"></i><span>Facebook</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a target="_blank" title="Google+" href="http://google.com/+username">
+                                    <i class="fa fa-google-plus fa-1x"></i><span>Google+</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a target="_blank" title="Twitter" href="http://www.twitter.com/username">
+                                    <i class="fa fa-twitter fa-1x"></i><span>Twitter</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a target="_blank" title="Instagram" href="http://www.instagram.com/username">
+                                    <i class="fa fa-instagram fa-1x"></i><span>Instagram</span>
+                                </a>
+                            </li>
+                        </ul>
+                        <!--End of Social Icons in Header-->
+                    </aside>
+
+                    <!--Main Navigation-->
+                    <nav id="nav-main">
+                        <ul>
+                            <li>
+                                <a style="color:green" href="{% url 'home2' %}">Home</a>
+                            </li>
+                            <li>
+                                <a style="color:green" href="{% url 'shop' %}">Products</a>
+                            </li>
+                            <li>
+                                <a style="color:green" href="{% url 'about' %}">About</a>
+                            </li>
+                            <li>
+                                <a style="color:green" href="{% url 'contact' %}">Contact</a>
+                            </li>
+                            <li>
+                                <a style="color:green" href="{% url 'myitem' %}">Myitems</a>
+                            </li>
+
+                        </ul>
+                    </nav>
+                    <!--End of Main Navigation-->
+
+                    <div id="nav-trigger"><span></span></div>
+                    <nav id="nav-mobile"></nav>
+                </div>
+            </div>
+        </div>
+        <!--End of Header-->
+
+        <!--Banner Content-->
+        <div id="banner-content" class="row clearfix">
+            <div class="col-38">
+                <div class="section-heading">
+                    <h1 style="color:green">Welcome to VLX</h1>
+                    <h2 style="color:white">Buy and sell anything easily on VLX. Post ads for free and connect with buyers or sellers near you.</h2>
+                </div>
+
+                <!--Call to Action-->
+                <a href="{% url 'add_dataform' %}" class="button" style="color:green">Post Your Ad Today</a>
+                <!--End Call to Action-->
+            </div>
+        </div>
+    </header>
+
+    <!--Main Content Area-->
+    <main id="content">
+
+        <!--Introduction-->
+        <section id="about" class="introduction scrollto">
+            <div class="row clearfix">
+                <div class="col-3">
+                    <div class="section-heading">
+                        <h3>SELL WITH EASE</h3>
+                        <h2 class="section-title">How VLX Helps You</h2>
+                        <p class="section-subtitle">Post your products online, reach thousands of users, and close deals effortlessly.</p>
+                    </div>
+                </div>
+
+                <div class="col-2-3">
+                    <!--Features-->
+                    <div class="col-2 icon-block icon-top wow fadeInUp" data-wow-delay="0.1s">
+                        <div class="icon">
+                            <i class="fa fa-bolt fa-2x"></i>
+                        </div>
+                        <div class="icon-block-description">
+                            <h4>Quick Posting</h4>
+                            <p>Create and publish ads in just a few clicks.</p>
+                        </div>
+                    </div>
+
+                    <div class="col-2 icon-block icon-top wow fadeInUp" data-wow-delay="0.3s">
+                        <div class="icon">
+                            <i class="fa fa-users fa-2x"></i>
+                        </div>
+                        <div class="icon-block-description">
+                            <h4>Wide Audience</h4>
+                            <p>Reach thousands of potential buyers in your area.</p>
+                        </div>
+                    </div>
+
+                    <div class="col-2 icon-block icon-top wow fadeInUp" data-wow-delay="0.5s">
+                        <div class="icon">
+                            <i class="fa fa-handshake-o fa-2x"></i>
+                        </div>
+                        <div class="icon-block-description">
+                            <h4>Secure Transactions</h4>
+                            <p>Connect with trusted buyers and sellers.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!--Content Section-->
+        <div style="height:2px" id="services" class="scrollto clearfix">
+
+            <div class="row no-padding-bottom clearfix">
+
+
+                <!--Content Left Side-->
+                <div class="col-3">
+
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+        <!--End of Content Section-->
+
+
+
+        <!--Clients-->
+        <section id="clients" class="scrollto clearfix">
+            <div class="row clearfix">
+
+                <div class="col-3">
+
+                    <div class="section-heading">
+                        <h3>TRUST</h3>
+                        <h2 class="section-title">Select Your Preferred Category</h2>
+                        <p class="section-subtitle">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                            eiusmod
+                            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam!</p>
+                    </div>
+
+                </div>
+
+                <div class="col-2-3">
+
+                    {% for item, number in paired_data %}
+    <a href="{% url 'product_page' subcat_name=item.Subcategoryname %}" class="col-3">
+        <img src="{% static 'web1/images/settings.png' %}" alt="Company"
+             class="{% if forloop.counter0|divisibleby:2 %}rotate-clockwise{% else %}rotate-anticlockwise{% endif %}" style="height:100%" />
+        <h3 style="margin-top:-150px;color:white">{{ number }}</h3><br><br><br><br>
+        <div style="height:200px" class="client-overlay">
+            <span>
+                <h5 style="color:yellow">Description</h5> {{ item.Description }}
+            </span>
+        </div>
+        <div class="section-title">
+            <h5 style="color:black"><b>{{ item.Subcategoryname }}</b></h5>
+        </div>
+    </a>
+{% endfor %}
+
+
+
+
+                </div>
+
+            </div>
+
+
+
+        </section><br><br><br><br><br><br>
+        <section id="#" class="scrollto clearfix" style="background-color:black;">
+             <h4 style="color:green;padding-left:40%" class="section-title">Featured Products</h4><br>
+    <div class="row clearfix" style="background-color:black;">
+        <div class="col-2-2" style="display: flex; flex-wrap: wrap; gap: 20px;">
+           {% for i in pro %}
+    <a href="{% url 'product_single' pro_id=i.id %}" class="product-card" style="border: 2px solid gray; height: 400px; border-radius: 20px; flex: 0 1 calc(33.333% - 20px); background-color:black;">
+        {% if i.Vehicleimage1 %}
+            <img src="{{ i.Vehicleimage2.url }}" alt="Company" style="border: 2px solid black; width: 100%; height: auto;" />
+        {% else %}
+            <img src="/static/default-image.jpg" alt="No Image Available" style="border: 2px solid black; width: 100%; height: auto;" />
+        {% endif %}
+        <h5 style="color:white;"><b>{{ i.Productname|default:"No Product Name" }}</b></h5><br>
+<!--        <h5 style="color:white;"><b>{{ i.Subcategoryname|default:"No Product Name" }}</b></h5><br>-->
+        <h6 style="color:white;"><b>&#8377;{{ i.Price|default:"0.00" }}</b></h6>
+        <div class="client-overlay">
+            <span>
+                <h5 style="color:yellow">Description</h5>
+                {{ i.Description|default:"No Description Available" }}
+            </span>
+        </div>
+    </a>
+{% endfor %}
+
+        </div>
+    </div>
+</section>
+
+
+        <!--End of Clients-->
+
+        <!--Pricing Tables-->
+
+
+
+    </main>
+    <!--End Main Content Area-->
+
+
+    <!--Footer-->
+    <footer id="landing-footer" class="clearfix">
+        <div class="row clearfix">
+
+            <p id="copyright" class="col-2">Made with love by <a href="https://www.shapingrain.com">ShapingRain</a></p>
+
+            <!--Social Icons in Footer-->
+            <ul class="col-2 social-icons">
+                <li>
+                    <a target="_blank" title="Facebook" href="https://www.facebook.com/username">
+                        <i class="fa fa-facebook fa-1x"></i><span>Facebook</span>
+                    </a>
+                </li>
+                <li>
+                    <a target="_blank" title="Google+" href="http://google.com/+username">
+                        <i class="fa fa-google-plus fa-1x"></i><span>Google+</span>
+                    </a>
+                </li>
+                <li>
+                    <a target="_blank" title="Twitter" href="http://www.twitter.com/username">
+                        <i class="fa fa-twitter fa-1x"></i><span>Twitter</span>
+                    </a>
+                </li>
+                <li>
+                    <a target="_blank" title="Instagram" href="http://www.instagram.com/username">
+                        <i class="fa fa-instagram fa-1x"></i><span>Instagram</span>
+                    </a>
+                </li>
+                <li>
+                    <a target="_blank" title="behance" href="http://www.behance.net">
+                        <i class="fa fa-behance fa-1x"></i><span>Behance</span>
+                    </a>
+                </li>
+            </ul>
+            <!--End of Social Icons in Footer-->
+        </div>
+    </footer>
+    <!--End of Footer-->
+
+</div>
+<style>
+ @keyframes rotate-clockwise {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes rotate-anticlockwise {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(-360deg);
+    }
+}
+
+.rotate-clockwise {
+    animation: rotate-clockwise 3s linear infinite;
+}
+
+.rotate-anticlockwise {
+    animation: rotate-anticlockwise 3s linear infinite;
+}
+
+.rotate:hover {
+    animation-play-state: paused; /* Pause animation on hover */
+}
+
+
+
+</style>
+<style>
+    .col-2-2 {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px; /* Spacing between cards */
+}
+
+.product-card {
+    border: 2px solid gray;
+    height: 400px;
+    border-radius: 20px;
+    flex: 0 1 calc(33.333% - 20px); /* One-third width with spacing */
+    text-align: center;
+    background-color: #fff; /* Optional background for better contrast */
+}
+
+.product-card img {
+    border: 2px solid black;
+    width: 100%; /* Responsive image */
+    height: auto;
+}
+
+</style>
+<!-- Include JavaScript resources -->
+<script src="{% static 'web3/js/jquery.1.8.3.min.js' %}"></script>
+<script src="{% static 'web3/js/wow.min.js' %}"></script>
+<script src="{% static 'web3/js/featherlight.min.js' %}"></script>
+<script src="{% static 'web3/js/featherlight.gallery.min.js' %}"></script>
+<script src="{% static 'web3/js/jquery.enllax.min.js' %}"></script>
+<script src="{% static 'web3/js/jquery.scrollUp.min.js' %}"></script>
+<script src="{% static 'web3/js/jquery.easing.min.js' %}"></script>
+<script src="{% static 'web3/js/jquery.stickyNavbar.min.js' %}"></script>
+<script src="{% static 'web3/js/jquery.waypoints.min.js' %}"></script>
+<script src="{% static 'web3/js/images-loaded.min.js' %}"></script>
+<script src="{% static 'web3/js/lightbox.min.js' %}"></script>
+<script src="{% static 'web3/js/site.js' %}"></script>
+
+
+
+
+</body>
+</html>

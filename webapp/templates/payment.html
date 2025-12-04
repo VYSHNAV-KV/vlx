@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Payment Page</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <div class="payment-card">
+      <form action="#" method="POST">
+        <h2>Proceed to Payment</h2>
+        <div class="form-group"style="text-align:center;font-family: 'Times New Roman', serif;color:grey">
+            <h1>{{request.session.Name}}</h1>
+            <input type="hidden" name="">
+        </div>
+        <div class="illustration">
+          <div class="phone"></div>
+          <div class="credit-card"></div>
+        </div>
+        <button type="submit" class="payment-button">Make Payment</button>
+      </form>
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+<script src="https://checkout.razorpay.com/v1/checkout.js"
+    data-key="rzp_test_fis20GTuy931b9"
+    data-amount="{{payy_str}}"
+    data-currency="INR"
+    data-order_id="{{paymen.order_id}}"
+    data-buttontext=""
+    data-name="Quality Used Vehicles"
+    data-description="Your description"
+    data-image=""
+    data-prefill.name="abc"
+    data-prefill.email="abc@gmail.com"
+    data-theme.color="#4badeb"
+>
+
+</script>
+</body>
+</html>
+<style>
+    /* Reset some default styling */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #e5e5f7; /* Light purple */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .container {
+      text-align: center;
+    }
+
+    .payment-card {
+      background: #ffffff;
+      padding: 20px 30px;
+      border-radius: 15px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      width: 320px;
+    }
+
+    .payment-card h2 {
+      font-size: 24px;
+      margin-bottom: 20px;
+      color: #333;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+      text-align: left;
+    }
+
+    .form-group label {
+      font-size: 14px;
+      color: #555;
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    .form-group input {
+      width: 100%;
+      padding: 10px;
+      font-size: 14px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      outline: none;
+    }
+
+    .form-group input:focus {
+      border-color: #7ab8f5;
+      box-shadow: 0 0 5px rgba(122, 184, 245, 0.5);
+    }
+
+    .illustration {
+      position: relative;
+      margin: 20px 0;
+      height: 120px;
+    }
+
+    .phone {
+      width: 70px;
+      height: 120px;
+      background-color: #f5f5f5;
+      border: 2px solid #ccc;
+      border-radius: 10px;
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .credit-card {
+      width: 110px;
+      height: 70px;
+      background-color: #7ab8f5;
+      border-radius: 10px;
+      position: absolute;
+      right: 10%;
+      bottom: 0;
+      transform: rotate(-5deg);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .credit-card::after {
+      content: "";
+      position: absolute;
+      bottom: 10px;
+      left: 20px;
+      width: 60px;
+      height: 15px;
+      background: #ffffff;
+      border-radius: 5px;
+    }
+
+    .payment-button {
+      background-color: #ff4c4c;
+      color: white;
+      font-size: 16px;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 20px;
+      transition: background 0.3s;
+    }
+
+    .payment-button:hover {
+      background-color: #ff3333;
+    }
+  </style>

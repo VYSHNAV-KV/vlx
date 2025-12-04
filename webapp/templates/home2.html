@@ -1,0 +1,1310 @@
+
+<!DOCTYPE html>
+{% load static %}
+<html lang="zxx">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Ashion Template">
+    <meta name="keywords" content="Ashion, unica, creative, html">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Ashion | Template</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Cookie&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap"
+
+    rel="stylesheet">
+
+    <!-- Css Styles -->
+    <link rel="stylesheet" href="{% static 'path_to_your_css_file.css' %}">
+    <link rel="stylesheet" href="{% static 'web2/css/bootstrap.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'web2/css/font-awesome.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'web2/css/elegant-icons.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'web2/css/jquery-ui.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'web2/css/magnific-popup.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'web2/css/owl.carousel.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'web2/css/slicknav.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'web2/css/style.css' %}" type="text/css">
+
+
+    <link rel="stylesheet" href="{% static 'web1/css/open-iconic-bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'web1/css/animate.css' %}">
+
+    <link rel="stylesheet" href="{% static 'web1/css/owl.carousel.min.css' %}">
+    <link rel="stylesheet" href="{% static 'web1/css/owl.theme.default.min.css' %}">
+    <link rel="stylesheet" href="{% static 'web1/css/magnific-popup.css' %}">
+
+    <link rel="stylesheet" href="{% static 'web1/css/aos.css' %}">
+
+    <link rel="stylesheet" href="{% static 'web1/css/ionicons.min.css' %}">
+
+    <link rel="stylesheet" href="{% static 'web1/css/bootstrap-datepicker.css' %}">
+    <link rel="stylesheet" href="{% static 'web1/css/jquery.timepicker.css' %}">
+
+
+    <link rel="stylesheet" href="{% static 'web1/css/flaticon.css' %}">
+    <link rel="stylesheet" href="{% static 'web1/css/icomoon.css' %}">
+    <link rel="stylesheet" href="{% static 'web1/css/style.css' %}">
+</head>
+
+<body style="background-image: url('{% static 'web1/images/background1.jpg' %}'); background-size: cover; background-repeat: no-repeat; background-attachment: fixed; background-position: center; margin: 0; padding: 0;">
+
+
+
+    <!-- Page Preloder -->
+    <div id="preloder">
+        <div class="loader"></div>
+
+    </div>
+
+    <!-- Offcanvas Menu Begin -->
+    <div class="offcanvas-menu-overlay"></div>
+    <div class="offcanvas-menu-wrapper">
+        <div class="offcanvas__close">+</div>
+        <ul class="offcanvas__widget">
+            <li><span class="icon_search search-switch"></span></li>
+            <li><a href="#"><span class="icon_heart_alt"></span>
+                <div class="tip">2</div>
+            </a></li>
+            <li><a href="#"><span class="icon_bag_alt"></span>
+                <div class="tip">2</div>
+            </a></li>
+        </ul>
+        <div class="offcanvas__logo">
+            <a href="./index.html"><img src="img/logo.png" alt=""></a>
+        </div>
+        <div id="mobile-menu-wrap"></div>
+        <div class="offcanvas__auth">
+            <a href="#">Login</a>
+            <a href="#">Register</a>
+        </div>
+    </div>
+    <!-- Offcanvas Menu End -->
+
+
+    <!-- Header Section Begin -->
+    <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+	    <div class="container">
+	      <a class="navbar-brand" href="index.html"></a>
+	      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+	        <span class="oi oi-menu"></span> Menu
+	      </button>
+
+	      <div class="collapse navbar-collapse" id="ftco-nav" style="color:red" >
+	        <ul class="navbar-nav ml-auto" style="color:red">
+	          <li class="nav-item active" style="color:#32CD32"><a href="{% url 'home2' %}" class="nav-link"  style="color:#32CD32">Home</a></li>
+	          <li class="nav-item active" style="color:#32CD32"><a href="{% url 'shop' %}" class="nav-link"  style="color:#32CD32">products</a></li>
+
+	          <li class="nav-item"><a href="{% url 'about' %}" class="nav-link"  style="color:#32CD32">About</a></li>
+
+	          <li class="nav-item"><a href="{% url 'contact' %}" class="nav-link"  style="color:#32CD32">Contact</a></li>
+
+                <li class="nav-item"><a href="{% url 'myitem' %}" class="nav-link"  style="color:#32CD32">My Items</a></li>
+              {% if request.session.Name %}
+                <li style="color:white" ><a class="nav-link" href="{% url 'signup_page' %}"></a><b style="color:white" >{{request.session.Name}}</b></li>
+
+                {% else %}
+                <li class="nav-item cta cta-colored"><a style="color:white" href="{% url 'signup_page' %}" class="nav-link"><span class="icon-user"></span>Sign up/login</a></li>
+                {% endif %}
+                <li style="padding-left:20px" ><a class="nav-link" href="{% url 'user_logout' %}">Logout</a></li>
+
+
+
+	        </ul>
+	      </div>
+	    </div>
+	  </nav>
+
+    <div class="expandable-container">
+    <div class="image-slider">
+        {% for ad in images %}
+         <a href="{{ ad.link }}">
+            {% if ad.content %}
+                <img src="{{ ad.content.url }}" alt="Ad Image" class="expandable-image" style="display: none;">
+
+                 <!-- Fallback message if no image exists -->
+            {% endif %}
+         </a>
+        {% endfor %}
+        <button style="background-color:white"  class="expand-button"><< Skip Ad</button>
+    </div>
+
+
+
+    </div>
+
+
+    <!-- Header Section End -->
+
+    <!-- Categories Section Begin -->
+<!-- home2.html -->
+
+<!-- home2.html -->
+
+<form method="get" action="{% url 'search_products' %}" class="search-bar" id="searchBar">
+    <!-- Search input fields -->
+    <input type="search" name="q" placeholder="Search here..." required>
+    <input type="number" name="min_price" placeholder="Min Price">
+    <input type="number" name="max_price" placeholder="Max Price">
+
+    <!-- Submit Button -->
+    <button type="submit" class="go-btn">Go</button>
+
+    <!-- Expand Button (Always Visible) -->
+    <button type="button" class="search-btn" id="toggleSearch" style="color:white" >Search
+
+    </button>
+</form>
+
+
+
+
+
+    <section class="categories">
+
+
+    <div class="container-fluid">
+
+        <div class="row">
+
+
+            <!-- First Column -->
+            {% for i in cat %}
+
+                {% if i.id == 1 or i.id == 6 or i.id == 11 or i.id == 16 %}
+                <div  style="display: flex;border-radius:10px; background-color:green" class="hoverable-div">
+                    <div  >
+                        <div class="categories__item categories__large__item set-bg" data-setbg="{{ i.Categoryimage.url }}">
+
+                             <div class="categories__text">
+<!--                             <h1 style="color:blue">{{i.Categoryname}}</h1>-->
+                             <p style="color:transparent" >Sitamet, consectetur adipiscing elit, sed do eiusmod tempor incidid-unt labore edolore magna aliquapendisse ultrices gravida.</p>
+
+
+                            </div>
+                        </div>
+                        </div>
+
+                       <div style="width:400px;margin-top:80px;margin-left:10px">
+
+                           <div class="categories__text">
+                             <h1 style="color:black">{{i.Categoryname}}</h1>
+                             <p style="color:black">{{i.description}}</p>
+                             <a href="{% url 'add_dataform' %}">Sell Now</a>__OR__
+                             <a href="{% url 'subcategory' cat_name=i.Categoryname %}">Buy Now</a>
+
+
+                            </div>
+                           <a style="color:yellow" class="btn btn" href="{% url 'submit_ad' %}" type="button">Are you looking for space for an ad?</a>
+
+
+                           <h3><p style="color:white" >{{i.Description}}</p></h3>
+                       </div>
+
+                   </div>
+
+                {% endif %}
+
+
+            <!-- Second Column -->
+            {% if i.id != 1 or i.id != 6 or i.id != 11 or i.id != 16 %}
+            <div class="col-lg-6">
+                <div class="row">
+
+                        {% if i.id == 2 or i.id == 7 or i.id == 12 or i.id == 17 %}
+                        <div class="col-lg-11 col-md-11 col-sm-11 p-5   "  >
+                            <div  style="display: flex;border-radius:10px;background-color:green" class="hoverable-div" >
+                            <div class="categories__item set-bg" style="width:300px;height:300px" data-setbg="{{ i.Categoryimage.url }}">
+                                <div class="categories__text">
+<!--                                    <h4>Men’s fashion</h4>-->
+<!--                                    <p>358 items</p>-->
+<!--                                    <a  href="{% url 'add_dataform' %}">Sell now</a>__OR__-->
+<!--                                    <a href="{% url 'subcategory' cat_name=i.Categoryname %}">Buy Now</a>-->
+
+
+                                </div>
+                            </div>
+                            <div style="width:500px">
+                                <div class="categories__text">
+                                    <h4>{{i.Categoryname}}</h4>
+
+                                    <a href="{% url 'add_dataform' %}">Sell now</a>__OR__
+                                    <a href="{% url 'subcategory' cat_name=i.Categoryname %}">Buy Now</a>
+                                </div>
+
+                                <h1><p  style="color:white;">{{i.Description}}</p></h1>
+                            </div>
+                            </div>
+                        </div>
+                        {% elif i.id == 3 or i.id == 8 or i.id == 13 %}
+                        <div class="col-lg-11 col-md-11 col-sm-11 p-5   "  >
+                            <div  style="display: flex;border-radius:10px;background-color:green" class="hoverable-div" >
+                            <div class="categories__item set-bg" style="width:300px;height:300px" data-setbg="{{ i.Categoryimage.url }}">
+                                <div class="categories__text">
+<!--                                    <h4>Men’s fashion</h4>-->
+<!--                                    <p  >358 items</p>-->
+<!--                                    <a href="{% url 'add_dataform' %}">Sell now</a>__OR__-->
+<!--                                    <a href="{% url 'subcategory' cat_name=i.Categoryname %}">Buy Now</a>-->
+                                </div>
+                            </div>
+                            <div style="width:500px">
+                                <div class="categories__text">
+                                    <h4>{{i.Categoryname}}</h4>
+<!--                                    <p style="color:black" >358 items</p>-->
+                                    <a href="{% url 'add_dataform' %}">Sell now</a>__OR__
+                                    <a href="{% url 'subcategory' cat_name=i.Categoryname %}">Buy Now</a>
+                                </div>
+                                <h1><p  style="color:white;">{{i.Description}}</p></h1>
+                            </div>
+                            </div>
+                        </div>
+                        {% elif i.id == 4 or i.id == 9 or i.id == 14 %}
+                        <div class="col-lg-11 col-md-11 col-sm-11 p-5   "  >
+                            <div  style="display: flex;border-radius:10px;background-color:green" class="hoverable-div" >
+                            <div class="categories__item set-bg" style="width:300px;height:300px" data-setbg="{{ i.Categoryimage.url }}">
+                                <div class="categories__text">
+<!--                                    <h4>Men’s fashion</h4>-->
+<!--                                    <p style="color:black" >358 items</p>-->
+<!--                                    <a href="#">Sell now</a>-->
+
+                                </div>
+                            </div>
+                            <div style="width:500px">
+                                <div class="categories__text">
+                                    <h4>{{i.Categoryname}}</h4>
+<!--                                    <p style="color:black" >358 items</p>-->
+                                    <a href="{% url 'add_dataform' %}">Sell now</a>__OR__
+                                    <a href="{% url 'subcategory' cat_name=i.Categoryname %}">Buy Now</a>
+                                </div>
+                                <h1><p  style="color:white;">{{i.Description}}</p></h1>
+                            </div>
+                            </div>
+                        </div>
+                        {% elif i.id == 5 or i.id == 10 or i.id == 15 %}
+                        <div class="col-lg-11 col-md-11 col-sm-11 p-5   "  >
+                            <div  style="display: flex;border-radius:10px;background-color:green" class="hoverable-div" >
+                            <div class="categories__item set-bg" style="width:300px;height:300px" data-setbg="{{ i.Categoryimage.url }}">
+                                <div class="categories__text">
+<!--                                    <h4>Men’s fashion</h4>-->
+<!--                                    <p style="color:black">358 items</p>-->
+<!--                                    <a href="#">Sell now</a>-->
+                                </div>
+                            </div>
+                            <div style="width:500px">
+                                <div class="categories__text">
+                                    <h4>{{i.Categoryname}}</h4>
+<!--                                    <p style="color:black" >358 items</p>-->
+                                    <a href="{% url 'add_dataform' %}">Sell now</a>__OR__
+                                    <a href="{% url 'subcategory' cat_name=i.Categoryname %}">Buy Now</a>
+                                </div>
+                                <h1><p  style="color:white;">{{i.Description}}</p></h1>
+                            </div>
+                            </div>
+                        </div>
+                        {% endif %}
+
+                </div>
+            </div>
+            {% endif %}
+            {% endfor %}
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- Categories Section End -->
+
+<!-- Product Section Begin -->
+<!--        <section id="clients" class="scrollto clearfix" style="background-color:black;">-->
+<!--            <h4 style="color:white;padding-left:40px" class="section-title">Related Products</h4><br>-->
+<!--    <div class="row clearfix" style="background-color:black;">-->
+<!--        <div class="col-2-2" style="display: flex; flex-wrap: wrap; gap: 20px;">-->
+<!--           {% for i in product %}-->
+<!--    <a href="{% url 'product_single' pro_id=i.id %}" class="product-card" style="border: 2px solid gray; height: 400px; border-radius: 20px; flex: 0 1 calc(33.333% - 20px); background-color:black;">-->
+<!--        {% if i.Vehicleimage1 %}-->
+<!--            <img src="{{ i.Vehicleimage1.url }}" alt="Company" style="border: 2px solid black; width: 100%; height: auto;" />-->
+<!--        {% else %}-->
+<!--            <img src="/static/default-image.jpg" alt="No Image Available" style="border: 2px solid black; width: 100%; height: auto;" />-->
+<!--        {% endif %}-->
+<!--        <h5 style="color:white;"><b>{{ i.Productname|default:"No Product Name" }}</b></h5>-->
+<!--&lt;!&ndash;        <h5 style="color:white;"><b>{{ i.Subcategoryname|default:"No Product Name" }}</b></h5><br>&ndash;&gt;-->
+<!--        <h6 style="color:white;"><b>&#8377;{{ i.Price|default:"0.00" }}</b></h6>-->
+<!--        <div class="client-overlay">-->
+<!--&lt;!&ndash;            <span>&ndash;&gt;-->
+<!--&lt;!&ndash;                <h5 style="color:yellow">Description</h5>&ndash;&gt;-->
+<!--&lt;!&ndash;                {{ i.Description|default:"No Description Available" }}&ndash;&gt;-->
+<!--&lt;!&ndash;            </span>&ndash;&gt;-->
+<!--        </div>-->
+<!--    </a>-->
+<!--{% endfor %}-->
+
+<!--        </div>-->
+<!--    </div>-->
+<!--</section>-->
+<!--<section class="product spad">-->
+<!--    <div class="container">-->
+<!--&lt;!&ndash;        <div class="row">&ndash;&gt;-->
+<!--&lt;!&ndash;            <div class="col-lg-4 col-md-4">&ndash;&gt;-->
+<!--&lt;!&ndash;                <div class="section-title">&ndash;&gt;-->
+<!--&lt;!&ndash;                    <h4>New product</h4>&ndash;&gt;-->
+<!--&lt;!&ndash;                </div>&ndash;&gt;-->
+<!--&lt;!&ndash;            </div>&ndash;&gt;-->
+<!--&lt;!&ndash;            <div class="col-lg-8 col-md-8">&ndash;&gt;-->
+<!--&lt;!&ndash;                <ul class="filter__controls">&ndash;&gt;-->
+<!--&lt;!&ndash;                    <li class="active" data-filter="*">All</li>&ndash;&gt;-->
+<!--&lt;!&ndash;                    <li data-filter=".women">Women’s</li>&ndash;&gt;-->
+<!--&lt;!&ndash;                    <li data-filter=".men">Men’s</li>&ndash;&gt;-->
+<!--&lt;!&ndash;                    <li data-filter=".kid">Kid’s</li>&ndash;&gt;-->
+<!--&lt;!&ndash;                    <li data-filter=".accessories">Accessories</li>&ndash;&gt;-->
+<!--&lt;!&ndash;                    <li data-filter=".cosmetic">Cosmetics</li>&ndash;&gt;-->
+<!--&lt;!&ndash;                </ul>&ndash;&gt;-->
+<!--&lt;!&ndash;            </div>&ndash;&gt;-->
+<!--&lt;!&ndash;        </div>&ndash;&gt;-->
+<!--    {% for i in product %}-->
+<!--    {% if forloop.first or forloop.counter0|divisibleby:5 %}-->
+<!--        <div class="row property__gallery">-->
+<!--    {% endif %}-->
+
+<!--    <div class="col-lg-2 col-md-3 col-sm-4 col-6 mix women"  >-->
+<!--        <div class="product__item" style="width:250px;padding:40px">-->
+<!--            <div class="product__item__pic set-bg"-->
+<!--                 data-setbg="{% if i.Vehicleimage2 %}{{ i.Vehicleimage2.url }}{% else %}/static/img/default.jpg{% endif %}">-->
+<!--                <div class="label new">New</div>-->
+<!--                <ul class="product__hover">-->
+<!--                    {% if i.Vehicleimage2 %}-->
+<!--                        <li><a href="{{ i.Vehicleimage2.url }}" class="image-popup"><span class="arrow_expand"></span></a></li>-->
+<!--                    {% endif %}-->
+<!--                    <li><a href="#"><span class="icon_heart_alt"></span></a></li>-->
+<!--                    <li><a href="#"><span class="icon_bag_alt"></span></a></li>-->
+<!--                </ul>-->
+<!--            </div>-->
+<!--            <div class="product__item__text">-->
+<!--                <h6><a  style="color:white" href="#">{{ i.Productname }}</a></h6>-->
+<!--                <div class="rating">-->
+<!--                    <i class="fa fa-star"></i>-->
+<!--                    <i class="fa fa-star"></i>-->
+<!--                    <i class="fa fa-star"></i>-->
+<!--                    <i class="fa fa-star"></i>-->
+<!--                    <i class="fa fa-star"></i>-->
+<!--                </div>-->
+<!--                <div  style="color:white" class="product__price">₹{{ i.Price }}</div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+
+<!--    {% if forloop.counter|divisibleby:5 or forloop.last %}-->
+<!--        </div>-->
+<!--    {% endif %}-->
+<!--{% endfor %}-->
+
+
+
+<!--&lt;!&ndash;            <div class="col-lg-3 col-md-4 col-sm-6 mix men">&ndash;&gt;-->
+<!--&lt;!&ndash;                <div class="product__item">&ndash;&gt;-->
+<!--&lt;!&ndash;                    <div class="product__item__pic set-bg" data-setbg="img/product/product-2.jpg">&ndash;&gt;-->
+<!--&lt;!&ndash;                        <ul class="product__hover">&ndash;&gt;-->
+<!--&lt;!&ndash;                            <li><a href="img/product/product-2.jpg" class="image-popup"><span class="arrow_expand"></span></a></li>&ndash;&gt;-->
+<!--&lt;!&ndash;                            <li><a href="#"><span class="icon_heart_alt"></span></a></li>&ndash;&gt;-->
+<!--&lt;!&ndash;                            <li><a href="#"><span class="icon_bag_alt"></span></a></li>&ndash;&gt;-->
+<!--&lt;!&ndash;                        </ul>&ndash;&gt;-->
+<!--&lt;!&ndash;                    </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                    <div class="product__item__text">&ndash;&gt;-->
+<!--&lt;!&ndash;                        <h6><a href="#">Flowy striped skirt</a></h6>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <div class="rating">&ndash;&gt;-->
+<!--&lt;!&ndash;                            <i class="fa fa-star"></i>&ndash;&gt;-->
+<!--&lt;!&ndash;                            <i class="fa fa-star"></i>&ndash;&gt;-->
+<!--&lt;!&ndash;                            <i class="fa fa-star"></i>&ndash;&gt;-->
+<!--&lt;!&ndash;                            <i class="fa fa-star"></i>&ndash;&gt;-->
+<!--&lt;!&ndash;                            <i class="fa fa-star"></i>&ndash;&gt;-->
+<!--&lt;!&ndash;                        </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <div class="product__price">$ 49.0</div>&ndash;&gt;-->
+<!--&lt;!&ndash;                    </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                </div>&ndash;&gt;-->
+<!--&lt;!&ndash;            </div>&ndash;&gt;-->
+<!--&lt;!&ndash;            <div class="col-lg-3 col-md-4 col-sm-6 mix accessories">&ndash;&gt;-->
+<!--&lt;!&ndash;                <div class="product__item">&ndash;&gt;-->
+<!--&lt;!&ndash;                    <div class="product__item__pic set-bg" data-setbg="img/product/product-3.jpg">&ndash;&gt;-->
+<!--&lt;!&ndash;                        <div class="label stockout">out of stock</div>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <ul class="product__hover">&ndash;&gt;-->
+<!--&lt;!&ndash;                            <li><a href="img/product/product-3.jpg" class="image-popup"><span class="arrow_expand"></span></a></li>&ndash;&gt;-->
+<!--&lt;!&ndash;                            <li><a href="#"><span class="icon_heart_alt"></span></a></li>&ndash;&gt;-->
+<!--&lt;!&ndash;                            <li><a href="#"><span class="icon_bag_alt"></span></a></li>&ndash;&gt;-->
+<!--&lt;!&ndash;                        </ul>&ndash;&gt;-->
+<!--&lt;!&ndash;                    </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                    <div class="product__item__text">&ndash;&gt;-->
+<!--&lt;!&ndash;                        <h6><a href="#">Cotton T-Shirt</a></h6>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <div class="rating">&ndash;&gt;-->
+<!--&lt;!&ndash;                            <i class="fa fa-star"></i>&ndash;&gt;-->
+<!--&lt;!&ndash;                            <i class="fa fa-star"></i>&ndash;&gt;-->
+<!--&lt;!&ndash;                            <i class="fa fa-star"></i>&ndash;&gt;-->
+<!--&lt;!&ndash;                            <i class="fa fa-star"></i>&ndash;&gt;-->
+<!--&lt;!&ndash;                            <i class="fa fa-star"></i>&ndash;&gt;-->
+<!--&lt;!&ndash;                        </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <div class="product__price">$ 59.0</div>&ndash;&gt;-->
+<!--&lt;!&ndash;                    </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                </div>&ndash;&gt;-->
+<!--&lt;!&ndash;            </div>&ndash;&gt;-->
+<!--&lt;!&ndash;            <div class="col-lg-3 col-md-4 col-sm-6 mix cosmetic">&ndash;&gt;-->
+<!--&lt;!&ndash;                <div class="product__item">&ndash;&gt;-->
+<!--&lt;!&ndash;                    <div class="product__item__pic set-bg" data-setbg="img/product/product-4.jpg">&ndash;&gt;-->
+<!--&lt;!&ndash;                        <ul class="product__hover">&ndash;&gt;-->
+<!--&lt;!&ndash;                            <li><a href="img/product/product-4.jpg" class="image-popup"><span class="arrow_expand"></span></a></li>&ndash;&gt;-->
+<!--&lt;!&ndash;                            <li><a href="#"><span class="icon_heart_alt"></span></a></li>&ndash;&gt;-->
+<!--&lt;!&ndash;                            <li><a href="#"><span class="icon_bag_alt"></span></a></li>&ndash;&gt;-->
+<!--&lt;!&ndash;                        </ul>&ndash;&gt;-->
+<!--&lt;!&ndash;                    </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                    <div class="product__item__text">&ndash;&gt;-->
+<!--&lt;!&ndash;                        <h6><a href="#">Slim striped pocket shirt</a></h6>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <div class="rating">&ndash;&gt;-->
+<!--&lt;!&ndash;                            <i class="fa fa-star"></i>&ndash;&gt;-->
+<!--&lt;!&ndash;                            <i class="fa fa-star"></i>&ndash;&gt;-->
+<!--&lt;!&ndash;                            <i class="fa fa-star"></i>&ndash;&gt;-->
+<!--&lt;!&ndash;                            <i class="fa fa-star"></i>&ndash;&gt;-->
+<!--&lt;!&ndash;                            <i class="fa fa-star"></i>&ndash;&gt;-->
+<!--&lt;!&ndash;                        </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <div class="product__price">$ 59.0</div>&ndash;&gt;-->
+<!--&lt;!&ndash;                    </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                </div>&ndash;&gt;-->
+<!--&lt;!&ndash;            </div>&ndash;&gt;-->
+<!--&lt;!&ndash;            <div class="col-lg-3 col-md-4 col-sm-6 mix kid">&ndash;&gt;-->
+<!--&lt;!&ndash;                <div class="product__item">&ndash;&gt;-->
+<!--&lt;!&ndash;                    <div class="product__item__pic set-bg" data-setbg="img/product/product-5.jpg">&ndash;&gt;-->
+<!--&lt;!&ndash;                        <ul class="product__hover">&ndash;&gt;-->
+<!--&lt;!&ndash;                            <li><a href="img/product/product-5.jpg" class="image-popup"><span class="arrow_expand"></span></a></li>&ndash;&gt;-->
+<!--&lt;!&ndash;                            <li><a href="#"><span class="icon_heart_alt"></span></a></li>&ndash;&gt;-->
+<!--&lt;!&ndash;                            <li><a href="#"><span class="icon_bag_alt"></span></a></li>&ndash;&gt;-->
+<!--&lt;!&ndash;                        </ul>&ndash;&gt;-->
+<!--&lt;!&ndash;                    </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                    <div class="product__item__text">&ndash;&gt;-->
+<!--&lt;!&ndash;                        <h6><a href="#">Fit micro corduroy shirt</a></h6>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <div class="rating">&ndash;&gt;-->
+<!--&lt;!&ndash;                            <i class="fa fa-star"></i>&ndash;&gt;-->
+<!--&lt;!&ndash;                            <i class="fa fa-star"></i>&ndash;&gt;-->
+<!--&lt;!&ndash;                            <i class="fa fa-star"></i>&ndash;&gt;-->
+<!--&lt;!&ndash;                            <i class="fa fa-star"></i>&ndash;&gt;-->
+<!--&lt;!&ndash;                            <i class="fa fa-star"></i>&ndash;&gt;-->
+<!--&lt;!&ndash;                        </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <div class="product__price">$ 59.0</div>&ndash;&gt;-->
+<!--&lt;!&ndash;                    </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                </div>&ndash;&gt;-->
+<!--&lt;!&ndash;            </div>&ndash;&gt;-->
+<!--&lt;!&ndash;            <div class="col-lg-3 col-md-4 col-sm-6 mix women men kid accessories cosmetic">&ndash;&gt;-->
+<!--&lt;!&ndash;                <div class="product__item sale">&ndash;&gt;-->
+<!--&lt;!&ndash;                    <div class="product__item__pic set-bg" data-setbg="img/product/product-6.jpg">&ndash;&gt;-->
+<!--&lt;!&ndash;                        <div class="label sale">Sale</div>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <ul class="product__hover">&ndash;&gt;-->
+<!--&lt;!&ndash;                            <li><a href="img/product/product-6.jpg" class="image-popup"><span class="arrow_expand"></span></a></li>&ndash;&gt;-->
+<!--&lt;!&ndash;                            <li><a href="#"><span class="icon_heart_alt"></span></a></li>&ndash;&gt;-->
+<!--&lt;!&ndash;                            <li><a href="#"><span class="icon_bag_alt"></span></a></li>&ndash;&gt;-->
+<!--&lt;!&ndash;                        </ul>&ndash;&gt;-->
+<!--&lt;!&ndash;                    </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                    <div class="product__item__text">&ndash;&gt;-->
+<!--&lt;!&ndash;                        <h6><a href="#">Tropical Kimono</a></h6>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <div class="rating">&ndash;&gt;-->
+<!--&lt;!&ndash;                            <i class="fa fa-star"></i>&ndash;&gt;-->
+<!--&lt;!&ndash;                            <i class="fa fa-star"></i>&ndash;&gt;-->
+<!--&lt;!&ndash;                            <i class="fa fa-star"></i>&ndash;&gt;-->
+<!--&lt;!&ndash;                            <i class="fa fa-star"></i>&ndash;&gt;-->
+<!--&lt;!&ndash;                            <i class="fa fa-star"></i>&ndash;&gt;-->
+<!--&lt;!&ndash;                        </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <div class="product__price">$ 49.0 <span>$ 59.0</span></div>&ndash;&gt;-->
+<!--&lt;!&ndash;                    </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                </div>&ndash;&gt;-->
+<!--&lt;!&ndash;            </div>&ndash;&gt;-->
+<!--&lt;!&ndash;            <div class="col-lg-3 col-md-4 col-sm-6 mix women men kid accessories cosmetic">&ndash;&gt;-->
+<!--&lt;!&ndash;                <div class="product__item">&ndash;&gt;-->
+<!--&lt;!&ndash;                    <div class="product__item__pic set-bg" data-setbg="img/product/product-7.jpg">&ndash;&gt;-->
+<!--&lt;!&ndash;                        <ul class="product__hover">&ndash;&gt;-->
+<!--&lt;!&ndash;                            <li><a href="img/product/product-7.jpg" class="image-popup"><span class="arrow_expand"></span></a></li>&ndash;&gt;-->
+<!--&lt;!&ndash;                            <li><a href="#"><span class="icon_heart_alt"></span></a></li>&ndash;&gt;-->
+<!--&lt;!&ndash;                            <li><a href="#"><span class="icon_bag_alt"></span></a></li>&ndash;&gt;-->
+<!--&lt;!&ndash;                        </ul>&ndash;&gt;-->
+<!--&lt;!&ndash;                    </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                    <div class="product__item__text">&ndash;&gt;-->
+<!--&lt;!&ndash;                        <h6><a href="#">Contrasting sunglasses</a></h6>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <div class="rating">&ndash;&gt;-->
+<!--&lt;!&ndash;                            <i class="fa fa-star"></i>&ndash;&gt;-->
+<!--&lt;!&ndash;                            <i class="fa fa-star"></i>&ndash;&gt;-->
+<!--&lt;!&ndash;                            <i class="fa fa-star"></i>&ndash;&gt;-->
+<!--&lt;!&ndash;                            <i class="fa fa-star"></i>&ndash;&gt;-->
+<!--&lt;!&ndash;                            <i class="fa fa-star"></i>&ndash;&gt;-->
+<!--&lt;!&ndash;                        </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <div class="product__price">$ 59.0</div>&ndash;&gt;-->
+<!--&lt;!&ndash;                    </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                </div>&ndash;&gt;-->
+<!--&lt;!&ndash;            </div>&ndash;&gt;-->
+<!--&lt;!&ndash;            <div class="col-lg-3 col-md-4 col-sm-6 mix women men kid accessories cosmetic">&ndash;&gt;-->
+<!--&lt;!&ndash;                <div class="product__item sale">&ndash;&gt;-->
+<!--&lt;!&ndash;                    <div class="product__item__pic set-bg" data-setbg="img/product/product-8.jpg">&ndash;&gt;-->
+<!--&lt;!&ndash;                        <div class="label">Sale</div>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <ul class="product__hover">&ndash;&gt;-->
+<!--&lt;!&ndash;                            <li><a href="img/product/product-8.jpg" class="image-popup"><span class="arrow_expand"></span></a></li>&ndash;&gt;-->
+<!--&lt;!&ndash;                            <li><a href="#"><span class="icon_heart_alt"></span></a></li>&ndash;&gt;-->
+<!--&lt;!&ndash;                            <li><a href="#"><span class="icon_bag_alt"></span></a></li>&ndash;&gt;-->
+<!--&lt;!&ndash;                        </ul>&ndash;&gt;-->
+<!--&lt;!&ndash;                    </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                    <div class="product__item__text">&ndash;&gt;-->
+<!--&lt;!&ndash;                        <h6><a href="#">Water resistant backpack</a></h6>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <div class="rating">&ndash;&gt;-->
+<!--&lt;!&ndash;                            <i class="fa fa-star"></i>&ndash;&gt;-->
+<!--&lt;!&ndash;                            <i class="fa fa-star"></i>&ndash;&gt;-->
+<!--&lt;!&ndash;                            <i class="fa fa-star"></i>&ndash;&gt;-->
+<!--&lt;!&ndash;                            <i class="fa fa-star"></i>&ndash;&gt;-->
+<!--&lt;!&ndash;                            <i class="fa fa-star"></i>&ndash;&gt;-->
+<!--&lt;!&ndash;                        </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <div class="product__price">$ 49.0 <span>$ 59.0</span></div>&ndash;&gt;-->
+<!--&lt;!&ndash;                    </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                </div>&ndash;&gt;-->
+<!--&lt;!&ndash;            </div>&ndash;&gt;-->
+<!--&lt;!&ndash;        </div>&ndash;&gt;-->
+<!--    </div>-->
+<!--</section>-->
+<!-- Product Section End -->
+
+<!-- Banner Section Begin -->
+
+<!-- Banner Section End -->
+
+<!-- Trend Section Begin -->
+<!--<section class="trend spad">-->
+<!--    <div class="container">-->
+<!--        <div class="row">-->
+<!--            <div class="col-lg-4 col-md-4 col-sm-6">-->
+<!--                <div class="trend__content">-->
+<!--                    <div class="section-title">-->
+<!--                        <h4>Hot Trend</h4>-->
+<!--                    </div>-->
+<!--                    <div class="trend__item">-->
+<!--                        <div class="trend__item__pic">-->
+<!--                            <img src="img/trend/ht-1.jpg" alt="">-->
+<!--                        </div>-->
+<!--                        <div class="trend__item__text">-->
+<!--                            <h6>Chain bucket bag</h6>-->
+<!--                            <div class="rating">-->
+<!--                                <i class="fa fa-star"></i>-->
+<!--                                <i class="fa fa-star"></i>-->
+<!--                                <i class="fa fa-star"></i>-->
+<!--                                <i class="fa fa-star"></i>-->
+<!--                                <i class="fa fa-star"></i>-->
+<!--                            </div>-->
+<!--                            <div class="product__price">$ 59.0</div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div class="trend__item">-->
+<!--                        <div class="trend__item__pic">-->
+<!--                            <img src="img/trend/ht-2.jpg" alt="">-->
+<!--                        </div>-->
+<!--                        <div class="trend__item__text">-->
+<!--                            <h6>Pendant earrings</h6>-->
+<!--                            <div class="rating">-->
+<!--                                <i class="fa fa-star"></i>-->
+<!--                                <i class="fa fa-star"></i>-->
+<!--                                <i class="fa fa-star"></i>-->
+<!--                                <i class="fa fa-star"></i>-->
+<!--                                <i class="fa fa-star"></i>-->
+<!--                            </div>-->
+<!--                            <div class="product__price">$ 59.0</div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div class="trend__item">-->
+<!--                        <div class="trend__item__pic">-->
+<!--                            <img src="img/trend/ht-3.jpg" alt="">-->
+<!--                        </div>-->
+<!--                        <div class="trend__item__text">-->
+<!--                            <h6>Cotton T-Shirt</h6>-->
+<!--                            <div class="rating">-->
+<!--                                <i class="fa fa-star"></i>-->
+<!--                                <i class="fa fa-star"></i>-->
+<!--                                <i class="fa fa-star"></i>-->
+<!--                                <i class="fa fa-star"></i>-->
+<!--                                <i class="fa fa-star"></i>-->
+<!--                            </div>-->
+<!--                            <div class="product__price">$ 59.0</div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="col-lg-4 col-md-4 col-sm-6">-->
+<!--                <div class="trend__content">-->
+<!--                    <div class="section-title">-->
+<!--                        <h4>Best seller</h4>-->
+<!--                    </div>-->
+<!--                    <div class="trend__item">-->
+<!--                        <div class="trend__item__pic">-->
+<!--                            <img src="img/trend/bs-1.jpg" alt="">-->
+<!--                        </div>-->
+<!--                        <div class="trend__item__text">-->
+<!--                            <h6>Cotton T-Shirt</h6>-->
+<!--                            <div class="rating">-->
+<!--                                <i class="fa fa-star"></i>-->
+<!--                                <i class="fa fa-star"></i>-->
+<!--                                <i class="fa fa-star"></i>-->
+<!--                                <i class="fa fa-star"></i>-->
+<!--                                <i class="fa fa-star"></i>-->
+<!--                            </div>-->
+<!--                            <div class="product__price">$ 59.0</div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div class="trend__item">-->
+<!--                        <div class="trend__item__pic">-->
+<!--                            <img src="img/trend/bs-2.jpg" alt="">-->
+<!--                        </div>-->
+<!--                        <div class="trend__item__text">-->
+<!--                            <h6>Zip-pockets pebbled tote <br />briefcase</h6>-->
+<!--                            <div class="rating">-->
+<!--                                <i class="fa fa-star"></i>-->
+<!--                                <i class="fa fa-star"></i>-->
+<!--                                <i class="fa fa-star"></i>-->
+<!--                                <i class="fa fa-star"></i>-->
+<!--                                <i class="fa fa-star"></i>-->
+<!--                            </div>-->
+<!--                            <div class="product__price">$ 59.0</div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div class="trend__item">-->
+<!--                        <div class="trend__item__pic">-->
+<!--                            <img src="img/trend/bs-3.jpg" alt="">-->
+<!--                        </div>-->
+<!--                        <div class="trend__item__text">-->
+<!--                            <h6>Round leather bag</h6>-->
+<!--                            <div class="rating">-->
+<!--                                <i class="fa fa-star"></i>-->
+<!--                                <i class="fa fa-star"></i>-->
+<!--                                <i class="fa fa-star"></i>-->
+<!--                                <i class="fa fa-star"></i>-->
+<!--                                <i class="fa fa-star"></i>-->
+<!--                            </div>-->
+<!--                            <div class="product__price">$ 59.0</div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="col-lg-4 col-md-4 col-sm-6">-->
+<!--                <div class="trend__content">-->
+<!--                    <div class="section-title">-->
+<!--                        <h4>Feature</h4>-->
+<!--                    </div>-->
+<!--                    <div class="trend__item">-->
+<!--                        <div class="trend__item__pic">-->
+<!--                            <img src="img/trend/f-1.jpg" alt="">-->
+<!--                        </div>-->
+<!--                        <div class="trend__item__text">-->
+<!--                            <h6>Bow wrap skirt</h6>-->
+<!--                            <div class="rating">-->
+<!--                                <i class="fa fa-star"></i>-->
+<!--                                <i class="fa fa-star"></i>-->
+<!--                                <i class="fa fa-star"></i>-->
+<!--                                <i class="fa fa-star"></i>-->
+<!--                                <i class="fa fa-star"></i>-->
+<!--                            </div>-->
+<!--                            <div class="product__price">$ 59.0</div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div class="trend__item">-->
+<!--                        <div class="trend__item__pic">-->
+<!--                            <img src="img/trend/f-2.jpg" alt="">-->
+<!--                        </div>-->
+<!--                        <div class="trend__item__text">-->
+<!--                            <h6>Metallic earrings</h6>-->
+<!--                            <div class="rating">-->
+<!--                                <i class="fa fa-star"></i>-->
+<!--                                <i class="fa fa-star"></i>-->
+<!--                                <i class="fa fa-star"></i>-->
+<!--                                <i class="fa fa-star"></i>-->
+<!--                                <i class="fa fa-star"></i>-->
+<!--                            </div>-->
+<!--                            <div class="product__price">$ 59.0</div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div class="trend__item">-->
+<!--                        <div class="trend__item__pic">-->
+<!--                            <img src="img/trend/f-3.jpg" alt="">-->
+<!--                        </div>-->
+<!--                        <div class="trend__item__text">-->
+<!--                            <h6>Flap cross-body bag</h6>-->
+<!--                            <div class="rating">-->
+<!--                                <i class="fa fa-star"></i>-->
+<!--                                <i class="fa fa-star"></i>-->
+<!--                                <i class="fa fa-star"></i>-->
+<!--                                <i class="fa fa-star"></i>-->
+<!--                                <i class="fa fa-star"></i>-->
+<!--                            </div>-->
+<!--                            <div class="product__price">$ 59.0</div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</section>-->
+<!-- Trend Section End -->
+
+<!-- Discount Section Begin -->
+<!--<section class="discount">-->
+<!--    <div class="container">-->
+<!--        <div class="row">-->
+<!--            <div class="col-lg-6 p-0">-->
+<!--                <div class="discount__pic">-->
+<!--                    <img src="img/discount.jpg" alt="">-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="col-lg-6 p-0">-->
+<!--                <div class="discount__text">-->
+<!--                    <div class="discount__text__title">-->
+<!--                        <span>Discount</span>-->
+<!--                        <h2>Summer 2019</h2>-->
+<!--                        <h5><span>Sale</span> 50%</h5>-->
+<!--                    </div>-->
+<!--                    <div class="discount__countdown" id="countdown-time">-->
+<!--                        <div class="countdown__item">-->
+<!--                            <span>22</span>-->
+<!--                            <p>Days</p>-->
+<!--                        </div>-->
+<!--                        <div class="countdown__item">-->
+<!--                            <span>18</span>-->
+<!--                            <p>Hour</p>-->
+<!--                        </div>-->
+<!--                        <div class="countdown__item">-->
+<!--                            <span>46</span>-->
+<!--                            <p>Min</p>-->
+<!--                        </div>-->
+<!--                        <div class="countdown__item">-->
+<!--                            <span>05</span>-->
+<!--                            <p>Sec</p>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <a href="#">Shop now</a>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</section>-->
+<!-- Discount Section End -->
+
+<!-- Services Section Begin -->
+<section class="services spad">
+    <div style="height:600px" class="container">
+
+    </div>
+</section>
+<!-- Services Section End -->
+
+<!-- Instagram Begin -->
+<!--<div class="instagram">-->
+<!--    <div class="container-fluid">-->
+<!--        <div class="row">-->
+<!--            <div class="col-lg-2 col-md-4 col-sm-4 p-0">-->
+<!--                <div class="instagram__item set-bg" data-setbg="img/instagram/insta-1.jpg">-->
+<!--                    <div class="instagram__text">-->
+<!--                        <i class="fa fa-instagram"></i>-->
+<!--                        <a href="#">@ ashion_shop</a>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="col-lg-2 col-md-4 col-sm-4 p-0">-->
+<!--                <div class="instagram__item set-bg" data-setbg="img/instagram/insta-2.jpg">-->
+<!--                    <div class="instagram__text">-->
+<!--                        <i class="fa fa-instagram"></i>-->
+<!--                        <a href="#">@ ashion_shop</a>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="col-lg-2 col-md-4 col-sm-4 p-0">-->
+<!--                <div class="instagram__item set-bg" data-setbg="img/instagram/insta-3.jpg">-->
+<!--                    <div class="instagram__text">-->
+<!--                        <i class="fa fa-instagram"></i>-->
+<!--                        <a href="#">@ ashion_shop</a>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="col-lg-2 col-md-4 col-sm-4 p-0">-->
+<!--                <div class="instagram__item set-bg" data-setbg="img/instagram/insta-4.jpg">-->
+<!--                    <div class="instagram__text">-->
+<!--                        <i class="fa fa-instagram"></i>-->
+<!--                        <a href="#">@ ashion_shop</a>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="col-lg-2 col-md-4 col-sm-4 p-0">-->
+<!--                <div class="instagram__item set-bg" data-setbg="img/instagram/insta-5.jpg">-->
+<!--                    <div class="instagram__text">-->
+<!--                        <i class="fa fa-instagram"></i>-->
+<!--                        <a href="#">@ ashion_shop</a>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="col-lg-2 col-md-4 col-sm-4 p-0">-->
+<!--                <div class="instagram__item set-bg" data-setbg="img/instagram/insta-6.jpg">-->
+<!--                    <div class="instagram__text">-->
+<!--                        <i class="fa fa-instagram"></i>-->
+<!--                        <a href="#">@ ashion_shop</a>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
+<!-- Instagram End -->
+
+<!-- Footer Section Begin -->
+<footer style="background-color:black" class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 col-md-6 col-sm-7">
+                <div class="footer__about">
+                    <div class="footer__logo">
+                        <a href="./index.html"><img src="img/logo.png" alt=""></a>
+                    </div>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+                    cilisis.</p>
+                    <div class="footer__payment">
+                        <a href="#"><img src="img/payment/payment-1.png" alt=""></a>
+                        <a href="#"><img src="img/payment/payment-2.png" alt=""></a>
+                        <a href="#"><img src="img/payment/payment-3.png" alt=""></a>
+                        <a href="#"><img src="img/payment/payment-4.png" alt=""></a>
+                        <a href="#"><img src="img/payment/payment-5.png" alt=""></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-3 col-sm-5">
+                <div class="footer__widget">
+                    <h6>Quick links</h6>
+                    <ul>
+                        <li><a href="#">About</a></li>
+                        <li><a href="#">Blogs</a></li>
+                        <li><a href="#">Contact</a></li>
+                        <li><a href="#">FAQ</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-3 col-sm-4">
+                <div class="footer__widget">
+                    <h6>Account</h6>
+                    <ul>
+                        <li><a href="#">My Account</a></li>
+                        <li><a href="#">Orders Tracking</a></li>
+                        <li><a href="#">Checkout</a></li>
+                        <li><a href="#">Wishlist</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-8 col-sm-8">
+                <div class="footer__newslatter">
+                    <h6>NEWSLETTER</h6>
+                    <form action="#">
+                        <input type="text" placeholder="Email">
+                        <button type="submit" class="site-btn">Subscribe</button>
+                    </form>
+                    <div class="footer__social">
+                        <a href="#"><i class="fa fa-facebook"></i></a>
+                        <a href="#"><i class="fa fa-twitter"></i></a>
+                        <a href="#"><i class="fa fa-youtube-play"></i></a>
+                        <a href="#"><i class="fa fa-instagram"></i></a>
+                        <a href="#"><i class="fa fa-pinterest"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                <div class="footer__copyright__text">
+                    <p>Copyright &copy; <script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by Vyshnav KV</p>
+                </div>
+                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+            </div>
+        </div>
+    </div>
+</footer>
+<!-- Footer Section End -->
+
+<!-- Search Begin -->
+<div class="search-model">
+    <div class="h-100 d-flex align-items-center justify-content-center">
+        <div class="search-close-switch">+</div>
+        <form class="search-model-form">
+            <input type="text" id="search-input" placeholder="Search here.....">
+        </form>
+    </div>
+</div>
+<!-- Search End -->
+
+
+
+<style>
+  .hoverable-div {
+<!--    width: 1000px; /* Set a width */-->
+<!--    height: 1000px; /* Set a height */-->
+    background-color:green; /* Optional for visibility */
+    text-align: center;
+    line-height: 150px; /* Center text vertically */
+    transition: background-color 0.3s ease, transform 0.3s ease; /* Smooth effects */
+    color:white;
+    text-align:center;
+
+  }
+
+  .hoverable-div:hover {
+    background-color:green; /* Change color */
+    transform: scale(1.05);; /* Slightly enlarge the div */
+    cursor: pointer; /* Show pointer when hovering */
+    border: 2px solid white;
+    color:white
+    text-align:center;
+  }
+</style>
+
+<!--    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>-->
+<!--    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>-->
+<!--<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">-->
+
+<!--<script>-->
+<!--    $(function() {-->
+<!--        // Autocomplete for Product Names-->
+<!--        $("#search_input").autocomplete({-->
+<!--            source: function(request, response) {-->
+<!--                $.ajax({-->
+<!--                    url: "{% url 'search_products' %}",-->
+<!--                    data: {-->
+<!--                        term: request.term,  // Term entered by the user-->
+<!--                    },-->
+<!--                    success: function(data) {-->
+<!--                        response(data);  // Pass the results to the autocomplete widget-->
+<!--                    }-->
+<!--                });-->
+<!--            },-->
+<!--            minLength: 2,  // Minimum length before suggestions show-->
+<!--        });-->
+<!--    });-->
+<!--</script>-->
+<!--<script>-->
+<!--    $(function() {-->
+<!--        // Autocomplete for Product Names-->
+<!--        $("#search_input").autocomplete({-->
+<!--            source: function(request, response) {-->
+<!--                $.ajax({-->
+<!--                    url: "{% url 'search_products' %}",-->
+<!--                    data: {-->
+<!--                        term: request.term,  // Term entered by the user-->
+<!--                    },-->
+<!--                    success: function(data) {-->
+<!--                        response(data.product_names);  // Use the product names from the response-->
+<!--                    }-->
+<!--                });-->
+<!--            },-->
+<!--            minLength: 2,  // Minimum length before suggestions show-->
+<!--        });-->
+
+<!--        // Autocomplete for Categories (if needed)-->
+<!--        $("#category").autocomplete({-->
+<!--            source: function(request, response) {-->
+<!--                $.ajax({-->
+<!--                    url: "{% url 'search_products' %}",-->
+<!--                    data: {-->
+<!--                        term: request.term,  // Term entered by the user-->
+<!--                    },-->
+<!--                    success: function(data) {-->
+<!--                        response(data.categories);  // Use the categories from the response-->
+<!--                    }-->
+<!--                });-->
+<!--            },-->
+<!--            minLength: 2,-->
+<!--        });-->
+
+<!--        // Autocomplete for Subcategories (if needed)-->
+<!--        $("#subcategory").autocomplete({-->
+<!--            source: function(request, response) {-->
+<!--                $.ajax({-->
+<!--                    url: "{% url 'search_products' %}",-->
+<!--                    data: {-->
+<!--                        term: request.term,  // Term entered by the user-->
+<!--                    },-->
+<!--                    success: function(data) {-->
+<!--                        response(data.subcategories);  // Use the subcategories from the response-->
+<!--                    }-->
+<!--                });-->
+<!--            },-->
+<!--            minLength: 2,-->
+<!--        });-->
+<!--    });-->
+<!--</script>-->
+
+<style>
+    .expandable-container {
+    position: relative;
+    width: 100%;
+}
+
+.image-slider {
+    position: relative;
+    width: 100%;
+}
+
+.expandable-image {
+    width:90%;
+    height: 150px;
+    display: none; /* Initially hide all images */
+    transition: opacity 1s ease-in-out;  /* Optional: Add a fade transition for effect */
+}
+
+.expand-button {
+    position: absolute;
+    top: 130px;
+    right: 153px;
+    background-color:grey;
+    border: none;
+    font-size: 10px;
+    color: black;
+    cursor: pointer;
+}
+
+
+
+</style>
+
+
+<style>
+
+.search-bar {
+    width: 100px; /* Start small */
+
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    border: 1px solid #dfe1e5;
+    border-radius: 24px;
+    background-color: #fff;
+    padding: 5px;
+    box-shadow: 0 1px 6px rgba(32, 33, 36, 0.28);
+    overflow: hidden;
+    transition: width 0.5s ease;
+    transform-origin: right; /* Expand from right to left */
+    position: fixed;
+    top: 70px;
+    right: 20px; /* Keep the button on the right */
+    z-index: 1000;
+}
+
+/* Expanded Search Bar */
+.search-bar.active {
+    width: 800px; /* Expands to the left */
+    background:transparent
+}
+
+/* Hide input fields initially */
+.search-bar input[type="search"],
+.search-bar input[type="number"],
+.search-bar .go-btn {
+    display: none;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+/* Show input fields on expand */
+.search-bar.active input[type="search"],
+.search-bar.active input[type="number"],
+.search-bar.active .go-btn {
+    display: block;
+    opacity: 1;
+}
+
+/* Search Button (Always Visible) */
+.search-btn {
+
+    background-color: green;
+    border: none;
+    border-radius: 50%;
+    width: 60px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    margin-left: auto; /* Pushes the button to the right */
+    transition: background-color 0.3s;
+}
+
+.search-btn:hover {
+    background-color: darkgreen;
+}
+
+.search-btn span::before {
+    content: '\1F50D'; /* Search icon */
+    font-size: 18px;
+    color: white;
+}
+
+/* Style for Input Fields */
+.search-bar input[type="search"],
+.search-bar input[type="number"] {
+    border: none;
+    outline: none;
+    font-size: 16px;
+    padding: 10px;
+    margin-right: 10px;
+    border-radius: 20px;
+    background-color: #f1f1f1;
+}
+
+/* Go Button */
+.go-btn {
+    background-color: green;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    padding: 8px 15px;
+    cursor: pointer;
+}
+
+
+
+
+
+</style>
+
+
+
+    <style>
+    .col-2-2 {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px; /* Spacing between cards */
+}
+
+.product-card {
+    border: 2px solid gray;
+    height: 400px;
+    border-radius: 20px;
+    flex: 0 1 calc(33.333% - 20px); /* One-third width with spacing */
+    text-align: center;
+    background-color: #fff; /* Optional background for better contrast */
+}
+
+.product-card img {
+    border: 2px solid black;
+    width: 100%; /* Responsive image */
+    height: auto;
+}
+
+</style>
+
+<script>
+    let images = document.querySelectorAll('.expandable-image');
+    let currentIndex = 0;
+
+    // Function to show next image and hide the previous one
+    function blinkImages() {
+        images.forEach(image => image.style.display = 'none');  // Hide all images
+        images[currentIndex].style.display = 'block';  // Show the current image
+
+        currentIndex = (currentIndex + 1) % images.length;  // Move to the next image
+    }
+
+    // Start the blinking effect by calling blinkImages every 2 seconds (2000ms)
+    setInterval(blinkImages, 2000);
+
+    // Handle hiding/showing the images when clicking the "*" button
+    document.querySelector('.expand-button').addEventListener('click', function() {
+        let imageContainer = document.querySelector('.image-slider');
+        if (imageContainer.style.display === "none") {
+            imageContainer.style.display = "block";  // Show the images
+        } else {
+            imageContainer.style.display = "none";  // Hide the images
+        }
+    });
+
+    // Initialize first image to be visible
+    blinkImages();
+</script>
+<script>
+let images = document.querySelectorAll('.expandable-image');
+    let currentIndex = 0;
+
+    // Function to show next image and hide the previous one
+    function blinkImages() {
+        images.forEach(image => image.style.display = 'none');  // Hide all images
+        images[currentIndex].style.display = 'block';  // Show the current image
+
+        currentIndex = (currentIndex + 1) % images.length;  // Move to the next image
+    }
+
+    // Start the blinking effect by calling blinkImages every 2 seconds (2000ms)
+    setInterval(blinkImages, 2000);
+
+    // Handle hiding/showing the images when clicking the "*" button
+    document.querySelector('.expand-button').addEventListener('click', function() {
+        let imageContainer = document.querySelector('.image-slider');
+        if (imageContainer.style.display === "none") {
+            imageContainer.style.display = "block";  // Show the images
+        } else {
+            imageContainer.style.display = "none";  // Hide the images
+        }
+    });
+
+    // Initialize first image to be visible
+    blinkImages();
+
+</script>
+
+
+<script>
+    document.getElementById('toggleSearch').addEventListener('click', function () {
+    document.getElementById('searchBar').classList.toggle('active');
+});
+</script>
+
+<!-- Include JavaScript resources -->
+<script src="{% static 'web3/js/jquery.1.8.3.min.js' %}"></script>
+<script src="{% static 'web3/js/wow.min.js' %}"></script>
+<script src="{% static 'web3/js/featherlight.min.js' %}"></script>
+<script src="{% static 'web3/js/featherlight.gallery.min.js' %}"></script>
+<script src="{% static 'web3/js/jquery.enllax.min.js' %}"></script>
+<script src="{% static 'web3/js/jquery.scrollUp.min.js' %}"></script>
+<script src="{% static 'web3/js/jquery.easing.min.js' %}"></script>
+<script src="{% static 'web3/js/jquery.stickyNavbar.min.js' %}"></script>
+<script src="{% static 'web3/js/jquery.waypoints.min.js' %}"></script>
+<script src="{% static 'web3/js/images-loaded.min.js' %}"></script>
+<script src="{% static 'web3/js/lightbox.min.js' %}"></script>
+<script src="{% static 'web3/js/site.js' %}"></script>
+
+
+
+
+<script src="{% static 'web1/js/jquery.min.js' %}"></script>
+  <script src="{% static 'web1/js/jquery-migrate-3.0.1.min.js' %}"></script>
+  <script src="{% static 'web1/js/popper.min.js' %}"></script>
+  <script src="{% static 'web1/js/bootstrap.min.js' %}"></script>
+  <script src="{% static 'web1/js/jquery.easing.1.3.js' %}"></script>
+  <script src="{% static 'web1/js/jquery.waypoints.min.js' %}"></script>
+  <script src="{% static 'web1/js/jquery.stellar.min.js' %}"></script>
+  <script src="{% static 'web1/js/owl.carousel.min.js' %}"></script>
+  <script src="{% static 'web1/js/jquery.magnific-popup.min.js' %}"></script>
+  <script src="{% static 'web1/js/aos.js' %}"></script>
+  <script src="{% static 'web1/js/jquery.animateNumber.min.js' %}"></script>
+  <script src="{% static 'web1/js/bootstrap-datepicker.js' %}"></script>
+  <script src="{% static 'web1/js/scrollax.min.js' %}"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+  <script src="{% static 'web1/js/google-map.js' %}"></script>
+  <script src="{% static 'web1/js/main.js' %}"></script>
+
+<!-- Js Plugins -->
+<script src="{% static 'web2/js/jquery-3.3.1.min.js' %}"></script>
+<script src="{% static 'web2/js/bootstrap.min.js' %}"></script>
+<script src="{% static 'web2/js/jquery.magnific-popup.min.js' %}"></script>
+<script src="{% static 'web2/js/jquery-ui.min.js' %}"></script>
+<script src="{% static 'web2/js/mixitup.min.js' %}"></script>
+<script src="{% static 'web2/js/jquery.countdown.min.js' %}"></script>
+<script src="{% static 'web2/js/jquery.slicknav.js' %}"></script>
+<script src="{% static 'web2/js/owl.carousel.min.js' %}"></script>
+<script src="{% static 'web2/js/jquery.nicescroll.min.js' %}"></script>
+<script src="{% static 'web2/js/main.js' %}"></script>
+</body>
+
+
+</html>

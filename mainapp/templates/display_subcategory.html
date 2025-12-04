@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+{% extends 'index.html' %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="card" style="border: 3px solid #98FB98;">
+                  <div class="card-body">
+                    <h3 class="card-title">Sub Category Table</h3><br><br>
+<!--                    <p class="card-description"> Add class <code>.table-{color}</code>-->
+<!--                    </p>-->
+                    <div class="table-responsive">
+                      <table class="table table-striped">
+                        <thead>
+                          <tr>
+                            <th style="color:white" >Category Name</th>
+                            <th style="color:white" > Sub Category Name</th>
+                            <th style="color:white" > Description</th>
+
+                            <th style="color:white" >Actions</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                        {% for i in cat %}
+                          <tr >
+                            <td class="py-1" >{{i.Categoryname}}</td>
+                            <td> {{i.Subcategoryname}}</td>
+                            <td> {{i.Description}}</td>
+
+                            <td>
+                              <a class="btn btn mr-2" style="color:grey;border: 2px solid grey;" href="{% url 'edit_subcategory' cat_id=i.id %}" >Edit</a>
+                              <a class="btn btn" href="{% url 'delete_subcategory' cat_id=i.id %}" style="color:grey;border: 2px solid grey;">Delete</a> </td>
+
+                          </tr>
+                        {% endfor %}
+<!--                          <tr class="table-warning">-->
+<!--                            <td> 2 </td>-->
+<!--                            <td> Messsy Adam </td>-->
+<!--                            <td> Flash </td>-->
+<!--                            <td> $245.30 </td>-->
+<!--                            <td> July 1, 2015 </td>-->
+<!--                          </tr>-->
+<!--                          <tr class="table-danger">-->
+<!--                            <td> 3 </td>-->
+<!--                            <td> John Richards </td>-->
+<!--                            <td> Premeire </td>-->
+<!--                            <td> $138.00 </td>-->
+<!--                            <td> Apr 12, 2015 </td>-->
+<!--                          </tr>-->
+<!--                          <tr class="table-success">-->
+<!--                            <td> 4 </td>-->
+<!--                            <td> Peter Meggik </td>-->
+<!--                            <td> After effects </td>-->
+<!--                            <td> $ 77.99 </td>-->
+<!--                            <td> May 15, 2015 </td>-->
+<!--                          </tr>-->
+<!--                          <tr class="table-primary">-->
+<!--                            <td> 5 </td>-->
+<!--                            <td> Edward </td>-->
+<!--                            <td> Illustrator </td>-->
+<!--                            <td> $ 160.25 </td>-->
+<!--                            <td> May 03, 2015 </td>-->
+<!--                          </tr>-->
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+
+</body>
+</html>
+{% endblock %}

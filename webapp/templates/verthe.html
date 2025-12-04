@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!-- search.html -->
+
+<h2>Search Results for "{{ query }}"</h2>
+<p>for "{{ query }}"</p>
+
+<div class="price-range">
+    {% if min_price and max_price %}
+        <p>Price range: ₹{{ min_price }} - ₹{{ max_price }}</p>
+    {% endif %}
+</div>
+
+<div class="row property__gallery">
+    {% for product in products %}
+        <div class="col-lg-3 col-md-4 col-sm-6">
+            <div class="product__item">
+                <!-- Display Product Images -->
+                <div class="product__item__pic set-bg"
+                     data-setbg="{% if product.Vehicleimage2 %}{{ product.Vehicleimage2.url }}{% else %}/static/img/default.jpg{% endif %}">
+                    <!-- Display other images if available -->
+                    {% if product.Vehicleimage1 %}
+                        <img src="{{ product.Vehicleimage1.url }}" alt="Image 1">
+                    {% endif %}
+                    {% if product.Vehicleimage2 %}
+                        <img src="{{ product.Vehicleimage2.url }}" alt="Image 2">
+                    {% endif %}
+                    {% if product.Vehicleimage3 %}
+                        <img src="{{ product.Vehicleimage3.url }}" alt="Image 3">
+                    {% endif %}
+                </div>
+                <div class="product__item__text">
+                    <h6>{{ product.Productname }}</h6>
+                    <p>Category: {{ product.Categoryname }}</p>
+                    <p>Subcategory: {{ product.Subcategoryname }}</p>
+                    <p>{{ product.Description }}</p>
+                    <p>Price: ₹{{ product.Price }}</p>
+                </div>
+            </div>
+        </div>
+    {% empty %}
+        <p>No products found.</p>
+    {% endfor %}
+</div>
+
+
+
+
+<style>
+    .product__item__pic img {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.product__item__pic {
+    position: relative;
+    overflow: hidden;
+    background-color: #f5f5f5;
+    border-radius: 5px;
+    height: 200px;  /* Adjust based on your needs */
+}
+
+.product__item__text {
+    padding: 10px;
+    background-color: #fff;
+    border-radius: 5px;
+}
+</style>
+</body>
+</html>
