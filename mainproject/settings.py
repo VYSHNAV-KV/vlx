@@ -60,6 +60,15 @@ MIDDLEWARE = [
 ]
 ASGI_APPLICATION = 'mainproject.asgi.application'
 
+CSRF_TRUSTED_ORIGINS = [
+    'https://*.railway.app',
+]
+# CSRF_TRUSTED_ORIGINS = [
+#     'https://web-production-617e1.up.railway.app',
+# ]
+
+
+
 CHANNEL_LAYERS = {
     'default': {
         'BACKEND': 'channels_redis.core.RedisChannelLayer',
